@@ -2351,7 +2351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emptyPlotMesh: {fileID: -2432090755550338912, guid: 7d694f25f02256646ba519ce7195c344, type: 3}
-  plantAnimation: {fileID: 5870903817728219214, guid: 0a0a47f737ee3d04196067c65a5b150d, type: 3}
+  plantAnimation: {fileID: 4662392697686605883, guid: 6d73cacbf015c9245b606714e8ce27ef, type: 3}
 --- !u!114 &1074048277
 MonoBehaviour:
   m_ObjectHideFlags: 0
