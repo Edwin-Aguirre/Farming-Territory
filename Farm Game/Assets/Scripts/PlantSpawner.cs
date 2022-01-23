@@ -9,7 +9,7 @@ public class PlantSpawner : MonoBehaviour
 
     //Temp
     [SerializeField]
-    private GameObject beetAnimation;
+    private GameObject plantAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,7 @@ public class PlantSpawner : MonoBehaviour
                 {
                     //selectionRenderer.mesh = seedMesh;
                     Destroy(hit.transform.parent.gameObject);//temp
-                    Instantiate(beetAnimation, hit.transform.position, transform.rotation);//tmep
+                    Instantiate(plantAnimation, hit.transform.position, transform.rotation);//tmep
                 }
             }
             
