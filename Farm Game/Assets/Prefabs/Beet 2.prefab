@@ -95,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.90185547, y: 0.40185547, z: 0.90185547}
-  m_Center: {x: 0, y: -1, z: 0}
+  m_Size: {x: 0.90185547, y: 0, z: 0.90185547}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4700727585069048747
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,5 +127,5 @@ Transform:
   m_Children:
   - {fileID: 4757967568308193353}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
