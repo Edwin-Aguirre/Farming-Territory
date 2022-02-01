@@ -8,16 +8,23 @@ public class MoneyManager : MonoBehaviour
     public static MoneyManager instance;
 
     [SerializeField]
-    private Text moneyText;
+    public Text moneyText;
 
     [SerializeField]
-    private int money;
+    public int money;
     [SerializeField]
-    private int beetAmount;
+    public int beetAmount;
 
     private void Awake() 
     {
-        instance = this;
+        if(instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     // Start is called before the first frame update

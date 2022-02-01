@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class PlantSpawner : MonoBehaviour
 {
+    public static PlantSpawner instance;
+
     [SerializeField]
     private Mesh emptyPlotMesh;
 
     //Temp
     [SerializeField]
-    private GameObject plantAnimation;
+    public GameObject plantAnimation;
+
+    private void Awake() 
+    {
+        if(instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +59,6 @@ public class PlantSpawner : MonoBehaviour
                 var selectionRenderer = selection.GetComponent<MeshFilter>();
                 if(selectionRenderer != null)
                 {
-                    //selectionRenderer.mesh = seedMesh;
                     Destroy(hit.transform.parent.gameObject);//temp
                     Instantiate(plantAnimation, hit.transform.position, transform.rotation);//tmep
                 }

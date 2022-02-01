@@ -20,7 +20,7 @@ public class PlantAnimations : MonoBehaviour
 
     void PlayAnimation()
     {
-        anim.Play("BeetAnim");
+        //anim.Play("BeetAnim");
     }
 
     void StopAnimation()
