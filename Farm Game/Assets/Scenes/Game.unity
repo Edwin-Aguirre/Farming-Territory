@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Beet\n\nTime: 3 sec  \nCost: $1"
+  message: "Beet\n\nTime: 3 sec  \nCost: $1\nWorth: $3"
 --- !u!1001 &159440627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2506,6 +2506,86 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 521ad75693b3cf44c82fffee14a69575, type: 3}
+--- !u!1 &619239344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 619239345}
+  - component: {fileID: 619239347}
+  - component: {fileID: 619239346}
+  m_Layer: 5
+  m_Name: Objective
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &619239345
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619239344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2131702145}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &619239346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619239344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Earn $100 in 60 seconds to win!
+--- !u!222 &619239347
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619239344}
+  m_CullTransparentMesh: 1
 --- !u!1001 &630155520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5867,7 +5947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Carrot\n\nTime: 4 sec  \nCost: $3"
+  message: "Carrot\n\nTime: 4 sec  \nCost: $3\nWorth: $5"
 --- !u!1 &1101487259
 GameObject:
   m_ObjectHideFlags: 0
@@ -5903,8 +5983,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 52}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 90, y: 35}
+  m_SizeDelta: {x: 75, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1101487261
 MonoBehaviour:
@@ -5930,16 +6010,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 40
     m_FontStyle: 1
-    m_BestFit: 1
-    m_MinSize: 4
-    m_MaxSize: 40
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: $0
+  m_Text: $100
 --- !u!222 &1101487262
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6313,7 +6393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Cabbage\n\nTime: 5 sec  \nCost: $5"
+  message: "Cabbage\n\nTime: 5 sec  \nCost: $5\nWorth: $7"
 --- !u!1001 &1188896376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7004,6 +7084,86 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4729381732437548980, guid: 8ac7e188939f8254b91e1f10d85b1805, type: 3}
   m_PrefabInstance: {fileID: 1333328639}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1341204779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1341204782}
+  - component: {fileID: 1341204781}
+  - component: {fileID: 1341204780}
+  m_Layer: 5
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1341204780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341204779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!222 &1341204781
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341204779}
+  m_CullTransparentMesh: 1
+--- !u!224 &1341204782
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341204779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2131702145}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -20}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 1, y: 1}
 --- !u!1001 &1346759111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7828,7 +7988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Red Pepper\n\nTime: 7 sec  \nCost: $7"
+  message: "Red Pepper\n\nTime: 7 sec  \nCost: $7\nWorth: $10"
 --- !u!1001 &1480496627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9301,7 +9461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 20, y: 20}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1672246954
@@ -10067,7 +10227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Win!
+  m_text: You Lost
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10369,7 +10529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Corn\n\nTime: 10 sec  \nCost: $12"
+  message: "Corn\n\nTime: 10 sec  \nCost: $12\nWorth: $15"
 --- !u!1001 &1804632386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12065,6 +12225,7 @@ GameObject:
   - component: {fileID: 2131702146}
   - component: {fileID: 2131702147}
   - component: {fileID: 2131702148}
+  - component: {fileID: 2131702149}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -12152,6 +12313,8 @@ RectTransform:
   - {fileID: 1367668675}
   - {fileID: 1646014799}
   - {fileID: 2025332168}
+  - {fileID: 1341204782}
+  - {fileID: 619239345}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12210,7 +12373,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 1646014798}
-  amountToWin: 5
+  loseScreen: {fileID: 2025332167}
+  amountToWin: 100
+  objectiveText: {fileID: 619239346}
+  objectiveMessage: Earn $100 in 2 minutes to win!
+--- !u!114 &2131702149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131702141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686f35d32f0bb124e915edf23c3da929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeValue: 120
+  timerText: {fileID: 1341204780}
 --- !u!1001 &2135070130
 PrefabInstance:
   m_ObjectHideFlags: 0

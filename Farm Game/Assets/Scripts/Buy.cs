@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Buy : MonoBehaviour
 {
+    //Written by Edwin Aguirre
     //This script handles the Shop in the game.
     //By clicking on a vegetable on the left, it will let you buy them.
-    //This is still WIP
 
     [SerializeField]
     private GameObject beetAnimation;
@@ -23,7 +23,7 @@ public class Buy : MonoBehaviour
     [SerializeField]
     private GameObject redPepperAnimation;
     
-    private void OnMouseDown() 
+    private void OnMouseDown() //Clicking on a vegetable sets the spawner to that animation
     {
         if(this.tag == "Beet" && MoneyManager.instance.money >= MoneyManager.instance.beetCost)
         {

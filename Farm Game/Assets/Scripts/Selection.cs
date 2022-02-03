@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Selection : MonoBehaviour
 {
+    //Written by Edwin Aguirre
     //This script allows the player to shoot a raycast under them to dectect an object
     //Whatever hits the raycast, will replace its material to look like it is highlighted
 

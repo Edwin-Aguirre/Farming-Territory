@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tooltip : MonoBehaviour
 {
+    //Written by Edwin Aguirre/tutorial
     //This script lets the player hover their mouse above objects and gives a description of them
     
     [TextArea]

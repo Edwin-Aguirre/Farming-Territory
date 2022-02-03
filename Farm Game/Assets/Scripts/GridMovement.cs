@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GridMovement : MonoBehaviour
 {
+    //Written by Edwin Aguirre
     //This script allows the player to move in a grid layout
     //It also uses perfect movement so that the Selector or player can be directly above each plot
 
@@ -51,7 +52,7 @@ public class GridMovement : MonoBehaviour
         isMoving = false;
     }
 
-    private void PlayerOneMovement()
+    private void PlayerOneMovement()//Moving with wasd in a grid layout
     {
         if(Input.GetKey(KeyCode.W) && !isMoving)
         {

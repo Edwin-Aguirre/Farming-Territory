@@ -2,6 +2,7 @@
 
 public class CameraControl : MonoBehaviour
 {
+    //Taken from tanks tutorial
     //This script allows the camera to follow the player
     
     public float m_DampTime = 0.2f;                 

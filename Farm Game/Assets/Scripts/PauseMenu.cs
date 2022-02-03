@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    //Written by Edwin Aguirre
     //Pressing the Esc key will pause the game and bring up a menu
 
     [SerializeField]
@@ -44,7 +45,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
         Resume();
     }
 

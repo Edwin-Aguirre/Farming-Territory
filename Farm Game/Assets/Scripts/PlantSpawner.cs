@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlantSpawner : MonoBehaviour
 {
+    //Written by Edwin Aguirre
     //This script allows the player to spawn vegetable objects to plant in the ground
     //Press space on an empty plot
     
@@ -15,7 +16,6 @@ public class PlantSpawner : MonoBehaviour
     [SerializeField]
     public GameObject plantAnimation;
 
-    //private bool runMethod = true;
 
     private void Awake() 
     {
@@ -41,7 +41,7 @@ public class PlantSpawner : MonoBehaviour
         MeshRaycast();
     }
 
-    public void MeshRaycast()
+    public void MeshRaycast()//Used to detect the squares/plots on the ground
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.down);
@@ -57,32 +57,27 @@ public class PlantSpawner : MonoBehaviour
                     selectionRenderer.mesh = emptyPlotMesh;
                 }
             }
-            else if(hit.collider.tag == "Plant" && Input.GetKeyDown("space") && MoneyManager.instance.money > 0)
+            else if(hit.collider.tag == "Plant" && Input.GetKeyDown("space") && MoneyManager.instance.money > 0)//If the player has enough money, they can plant a vegetable by pressing space
             {
                 var selection = hit.transform;
                 var selectionRenderer = selection.GetComponent<MeshFilter>();
-                if(selectionRenderer != null) //&& runMethod == true)
+                if(selectionRenderer != null)
                 {
                     Destroy(hit.transform.parent.gameObject);
                     Instantiate(plantAnimation, hit.transform.position, transform.rotation);
-                    Vegetable();
+                    BuyVegetable();
 
                     if(MoneyManager.instance.money <= 0)
                     {
-                       //runMethod = false;
                        MoneyManager.instance.money = 0;
                        MoneyManager.instance.moneyText.text = "$" + MoneyManager.instance.money.ToString();
                     }
                 }
-                // else
-                // {
-                //     //runMethod = true;
-                // }
             }
         }
     }
 
-    void Vegetable()
+    void BuyVegetable()//Takes away money when each vegetable is bought by planting it
     {
         if(plantAnimation.tag == "Beet")
         {

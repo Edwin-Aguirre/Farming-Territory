@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MoneyManager : MonoBehaviour
 {
+    //Written by Edwin Aguirre
     //This is a WIP script that handles the currency in the game
 
     public static MoneyManager instance;
