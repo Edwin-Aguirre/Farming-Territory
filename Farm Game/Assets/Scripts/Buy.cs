@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Buy : MonoBehaviour
 {
+    //This script handles the Shop in the game.
+    //By clicking on a vegetable on the left, it will let you buy them.
+    //This is still WIP
+
     [SerializeField]
     private GameObject beetAnimation;
 
@@ -21,25 +25,23 @@ public class Buy : MonoBehaviour
     
     private void OnMouseDown() 
     {
-        if(this.tag == "Beet" && MoneyManager.instance.money > MoneyManager.instance.beetAmount)
+        if(this.tag == "Beet" && MoneyManager.instance.money >= MoneyManager.instance.beetCost)
         {
             PlantSpawner.instance.plantAnimation = beetAnimation;
-            //MoneyManager.instance.money -= MoneyManager.instance.beetAmount;
-            //MoneyManager.instance.moneyText.text = "$" + MoneyManager.instance.money.ToString();
         }
-        if(this.tag == "Cabbage")
+        if(this.tag == "Cabbage" && MoneyManager.instance.money >= MoneyManager.instance.cabbageCost)
         {
             PlantSpawner.instance.plantAnimation = cabbageAnimation;
         }
-        if(this.tag == "Carrot")
+        if(this.tag == "Carrot" && MoneyManager.instance.money >= MoneyManager.instance.carrotCost)
         {
             PlantSpawner.instance.plantAnimation = carrotAnimation;
         }
-        if(this.tag == "Corn")
+        if(this.tag == "Corn" && MoneyManager.instance.money >= MoneyManager.instance.cornCost)
         {
             PlantSpawner.instance.plantAnimation = cornAnimation;
         }
-        if(this.tag == "RedPepper")
+        if(this.tag == "RedPepper" && MoneyManager.instance.money >= MoneyManager.instance.redPepperCost)
         {
             PlantSpawner.instance.plantAnimation = redPepperAnimation;
         }

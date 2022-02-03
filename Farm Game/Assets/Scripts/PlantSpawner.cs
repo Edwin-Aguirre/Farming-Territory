@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlantSpawner : MonoBehaviour
 {
+    //This script allows the player to spawn vegetable objects to plant in the ground
+    //Press space on an empty plot
+    
     public static PlantSpawner instance;
 
     [SerializeField]
     private Mesh emptyPlotMesh;
 
-    //Temp
     [SerializeField]
     public GameObject plantAnimation;
+
+    //private bool runMethod = true;
 
     private void Awake() 
     {
@@ -53,17 +57,52 @@ public class PlantSpawner : MonoBehaviour
                     selectionRenderer.mesh = emptyPlotMesh;
                 }
             }
-            else if(hit.collider.tag == "Plant" && Input.GetKeyDown("space"))
+            else if(hit.collider.tag == "Plant" && Input.GetKeyDown("space") && MoneyManager.instance.money > 0)
             {
                 var selection = hit.transform;
                 var selectionRenderer = selection.GetComponent<MeshFilter>();
-                if(selectionRenderer != null)
+                if(selectionRenderer != null) //&& runMethod == true)
                 {
-                    Destroy(hit.transform.parent.gameObject);//temp
-                    Instantiate(plantAnimation, hit.transform.position, transform.rotation);//tmep
+                    Destroy(hit.transform.parent.gameObject);
+                    Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                    Vegetable();
+
+                    if(MoneyManager.instance.money <= 0)
+                    {
+                       //runMethod = false;
+                       MoneyManager.instance.money = 0;
+                       MoneyManager.instance.moneyText.text = "$" + MoneyManager.instance.money.ToString();
+                    }
                 }
+                // else
+                // {
+                //     //runMethod = true;
+                // }
             }
-            
+        }
+    }
+
+    void Vegetable()
+    {
+        if(plantAnimation.tag == "Beet")
+        {
+            MoneyManager.instance.LoseMoney(MoneyManager.instance.beetCost);
+        }
+        if(plantAnimation.tag == "Cabbage")
+        {
+            MoneyManager.instance.LoseMoney(MoneyManager.instance.cabbageCost);
+        }
+        if(plantAnimation.tag == "Carrot")
+        {
+            MoneyManager.instance.LoseMoney(MoneyManager.instance.carrotCost);
+        }
+        if(plantAnimation.tag == "Corn")
+        {
+            MoneyManager.instance.LoseMoney(MoneyManager.instance.cornCost);
+        }
+        if(plantAnimation.tag == "RedPepper")
+        {
+            MoneyManager.instance.LoseMoney(MoneyManager.instance.redPepperCost);
         }
     }
 }

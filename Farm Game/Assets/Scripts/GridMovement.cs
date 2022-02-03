@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GridMovement : MonoBehaviour
 {
+    //This script allows the player to move in a grid layout
+    //It also uses perfect movement so that the Selector or player can be directly above each plot
+
     private bool isMoving;
     private Vector3 origPos, targetPos;
     private float timeToMove = 0.2f;

@@ -2,6 +2,8 @@
 
 public class CameraControl : MonoBehaviour
 {
+    //This script allows the camera to follow the player
+    
     public float m_DampTime = 0.2f;                 
     public float m_ScreenEdgeBuffer = 4f;           
     public float m_MinSize = 6.5f;                  

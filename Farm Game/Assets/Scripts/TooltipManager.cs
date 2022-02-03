@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class TooltipManager : MonoBehaviour
 {
     //Singleton Pattern
+    //This script handles the tooltips in the game
+    //Also makes sure to know when to activate the UI from showing
+
     public static TooltipManager instance;
 
     [SerializeField]

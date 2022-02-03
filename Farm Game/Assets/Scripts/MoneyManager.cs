@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MoneyManager : MonoBehaviour
 {
+    //This is a WIP script that handles the currency in the game
+
     public static MoneyManager instance;
 
     [SerializeField]
@@ -12,8 +14,26 @@ public class MoneyManager : MonoBehaviour
 
     [SerializeField]
     public int money;
+
     [SerializeField]
     public int beetAmount;
+    public int beetCost;
+
+    [SerializeField]
+    public int cabbageAmount;
+    public int cabbageCost;
+
+    [SerializeField]
+    public int carrotAmount;
+    public int carrotCost;
+
+    [SerializeField]
+    public int cornAmount;
+    public int cornCost;
+
+    [SerializeField]
+    public int redPepperAmount;
+    public int redPepperCost;
 
     private void Awake() 
     {
@@ -39,9 +59,15 @@ public class MoneyManager : MonoBehaviour
         
     }
 
-    public void AddMoney()
+    public void AddMoney(int amount)
     {
-        money += beetAmount;
+        money += amount;
+        moneyText.text = "$" + money.ToString();
+    }
+
+    public void LoseMoney(int lose)
+    {
+        money -= lose;
         moneyText.text = "$" + money.ToString();
     }
 }
