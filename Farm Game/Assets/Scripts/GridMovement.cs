@@ -72,7 +72,7 @@ public class GridMovement : MonoBehaviour
         }
     }
 
-    void WallRightRaycast()//For the boundary of the level. Stops the player from leaving the fence.
+    public void WallRightRaycast()//For the boundary of the level. Stops the player from leaving the fence.
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.right);
@@ -86,7 +86,7 @@ public class GridMovement : MonoBehaviour
         }
     }
 
-    void WallLeftRaycast()//For the boundary of the level. Stops the player from leaving the fence.
+    public void WallLeftRaycast()//For the boundary of the level. Stops the player from leaving the fence.
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.left);
@@ -100,7 +100,7 @@ public class GridMovement : MonoBehaviour
         }
     }
 
-    void WallUpRaycast()//For the boundary of the level. Stops the player from leaving the fence.
+    public void WallUpRaycast()//For the boundary of the level. Stops the player from leaving the fence.
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.forward);
@@ -114,7 +114,7 @@ public class GridMovement : MonoBehaviour
         }
     }
 
-    void WallDownRaycast()//For the boundary of the level. Stops the player from leaving the fence.
+    public void WallDownRaycast()//For the boundary of the level. Stops the player from leaving the fence.
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.back);

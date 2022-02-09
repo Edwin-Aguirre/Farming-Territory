@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ed1a20de230cf44a8db6a22f528336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyIndicator: {fileID: 3310099981975992481}
 --- !u!54 &6500974271680747018
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,6 +192,95 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4868322936882277337}
+  - {fileID: 2784357933302211099}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2391059235094496752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 5476365981549599361}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_Name
+      value: Money
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+--- !u!4 &2784357933302211099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+  m_PrefabInstance: {fileID: 2391059235094496752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3310099981975992481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c7d8f469a24aae04fb99a3e4b3d865eb, type: 3}
+  m_PrefabInstance: {fileID: 2391059235094496752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4744589148090215082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310099981975992481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6b5e7e23cd124419d6ab999e0bdede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 0.5
+  bobSpeed: 3
+  bobHeight: 0.1
