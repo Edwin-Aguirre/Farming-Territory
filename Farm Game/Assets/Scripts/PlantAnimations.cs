@@ -10,6 +10,9 @@ public class PlantAnimations : MonoBehaviour
 
     private Animator anim;
 
+    [SerializeField]
+    private GameObject moneyIndicator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,26 +33,7 @@ public class PlantAnimations : MonoBehaviour
     void StopAnimation()
     {
         anim.StopPlayback();
-        gameObject.tag = "Plant";
-        if(gameObject.transform.parent.tag == "Beet")
-        {
-            MoneyManager.instance.AddMoney(MoneyManager.instance.beetAmount);
-        }
-        if(gameObject.transform.parent.tag == "Cabbage")
-        {
-            MoneyManager.instance.AddMoney(MoneyManager.instance.cabbageAmount);
-        }
-        if(gameObject.transform.parent.tag == "Carrot")
-        {
-            MoneyManager.instance.AddMoney(MoneyManager.instance.carrotAmount);
-        }
-        if(gameObject.transform.parent.tag == "Corn")
-        {
-            MoneyManager.instance.AddMoney(MoneyManager.instance.cornAmount);
-        }
-        if(gameObject.transform.parent.tag == "RedPepper")
-        {
-            MoneyManager.instance.AddMoney(MoneyManager.instance.redPepperAmount);
-        }
+        gameObject.tag = "Collect";
+        moneyIndicator.SetActive(true);
     }
 }

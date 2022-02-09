@@ -16,6 +16,9 @@ public class PlantSpawner : MonoBehaviour
     [SerializeField]
     public GameObject plantAnimation;
 
+    [SerializeField]
+    private GameObject emptyPlot;
+
 
     private void Awake() 
     {
@@ -57,22 +60,23 @@ public class PlantSpawner : MonoBehaviour
                     selectionRenderer.mesh = emptyPlotMesh;
                 }
             }
-            else if(hit.collider.tag == "Plant" && Input.GetKeyDown("space") && MoneyManager.instance.money > 0)//If the player has enough money, they can plant a vegetable by pressing space
+            if(hit.collider.tag == "Plant" && Input.GetKeyDown("space") && MoneyManager.instance.money > 0)//If the player has enough money, they can plant a vegetable by pressing space
             {
-                var selection = hit.transform;
-                var selectionRenderer = selection.GetComponent<MeshFilter>();
-                if(selectionRenderer != null)
-                {
-                    Destroy(hit.transform.parent.gameObject);
-                    Instantiate(plantAnimation, hit.transform.position, transform.rotation);
-                    BuyVegetable();
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                BuyVegetable();
 
-                    if(MoneyManager.instance.money <= 0)
-                    {
-                       MoneyManager.instance.money = 0;
-                       MoneyManager.instance.moneyText.text = "$" + MoneyManager.instance.money.ToString();
-                    }
+                if(MoneyManager.instance.money <= 0)
+                {
+                    MoneyManager.instance.money = 0;
+                    MoneyManager.instance.moneyText.text = "$" + MoneyManager.instance.money.ToString();
                 }
+            }
+            else if(hit.collider.tag == "Collect" && Input.GetKeyDown("space"))
+            { 
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(emptyPlot, hit.transform.position, transform.rotation);
+                CollectVegetable();
             }
         }
     }
@@ -98,6 +102,35 @@ public class PlantSpawner : MonoBehaviour
         if(plantAnimation.tag == "RedPepper")
         {
             MoneyManager.instance.LoseMoney(MoneyManager.instance.redPepperCost);
+        }
+    }
+
+    void CollectVegetable()//Collects the vegetable and gives player money
+    {
+        RaycastHit hit;
+        Ray myRay = new Ray(transform.position, Vector3.down);
+        if(Physics.Raycast(myRay, out hit))
+        {
+            if(hit.collider.transform.parent.tag == "Beet")
+            {
+                MoneyManager.instance.AddMoney(MoneyManager.instance.beetAmount);
+            }
+            if(hit.collider.transform.parent.tag == "Cabbage")
+            {
+                MoneyManager.instance.AddMoney(MoneyManager.instance.cabbageAmount);
+            }
+            if(hit.collider.transform.parent.tag == "Carrot")
+            {
+                MoneyManager.instance.AddMoney(MoneyManager.instance.carrotAmount);
+            }
+            if(hit.collider.transform.parent.tag == "Corn")
+            {
+                MoneyManager.instance.AddMoney(MoneyManager.instance.cornAmount);
+            }
+            if(hit.collider.transform.parent.tag == "RedPepper")
+            {
+                MoneyManager.instance.AddMoney(MoneyManager.instance.redPepperAmount);
+            }
         }
     }
 }

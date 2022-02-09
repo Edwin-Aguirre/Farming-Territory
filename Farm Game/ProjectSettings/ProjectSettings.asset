@@ -157,7 +157,8 @@ PlayerSettings:
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.Farming-Territory
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -276,7 +277,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e77c5cd9be664144f929abf1444f1235, type: 3}
+      m_Icon: {fileID: 2800000, guid: 2b3891ca16b101149aa7835a37cf28ce, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
