@@ -42,6 +42,13 @@ public class MoneyManager : MonoBehaviour
     public int plotSeventyCost;
     public int plotHundredCost;
 
+    [SerializeField]
+    public int cowCost;
+    public int sheepCost;
+    public int chickenCost;
+    public int pigCost;
+    public int horseCost;
+
 
     private void Awake() 
     {
