@@ -28,7 +28,7 @@ public class ObjectSpinner : MonoBehaviour
     void Update()
     {
         //Spins the powerups
-        transform.Rotate(0, spinSpeed, 0, Space.World);
+        transform.Rotate(0, spinSpeed * Time.deltaTime, 0, Space.World);
         bobPosition.y = bob_Y + bobHeight * Mathf.Sin(bobSpeed * Time.time);
         transform.position = bobPosition;
     }

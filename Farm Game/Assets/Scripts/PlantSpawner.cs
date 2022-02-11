@@ -42,6 +42,11 @@ public class PlantSpawner : MonoBehaviour
     void Update()
     {
         MeshRaycast();
+        if(MoneyManager.instance.money <= 0)
+        {
+            MoneyManager.instance.money = 0;
+            MoneyManager.instance.moneyText.text = "$" + MoneyManager.instance.money.ToString();
+        }
     }
 
     public void MeshRaycast()//Used to detect the squares/plots on the ground
@@ -52,25 +57,11 @@ public class PlantSpawner : MonoBehaviour
         {
             if(hit.collider.tag == "Buy" && Input.GetKeyDown("space"))
             {
-                hit.transform.gameObject.tag = "Plant";//When the player collects the plant, it changes its tag so you can plant seeds.
-                var selection = hit.transform;
-                var selectionRenderer = selection.GetComponent<MeshFilter>();
-                if(selectionRenderer != null)
-                {
-                    selectionRenderer.mesh = emptyPlotMesh;
-                }
+                BuyPlot();
             }
-            if(hit.collider.tag == "Plant" && Input.GetKeyDown("space") && MoneyManager.instance.money > 0)//If the player has enough money, they can plant a vegetable by pressing space
+            if(hit.collider.tag == "Plant" && Input.GetKeyDown("space"))//If the player has enough money, they can plant a vegetable by pressing space
             {
-                Destroy(hit.transform.parent.gameObject);
-                Instantiate(plantAnimation, hit.transform.position, transform.rotation);
                 BuyVegetable();
-
-                if(MoneyManager.instance.money <= 0)
-                {
-                    MoneyManager.instance.money = 0;
-                    MoneyManager.instance.moneyText.text = "$" + MoneyManager.instance.money.ToString();
-                }
             }
             else if(hit.collider.tag == "Collect" && Input.GetKeyDown("space"))
             { 
@@ -83,25 +74,40 @@ public class PlantSpawner : MonoBehaviour
 
     void BuyVegetable()//Takes away money when each vegetable is bought by planting it
     {
-        if(plantAnimation.tag == "Beet")
+        RaycastHit hit;
+        Ray myRay = new Ray(transform.position, Vector3.down);
+        if(Physics.Raycast(myRay, out hit))
         {
-            MoneyManager.instance.LoseMoney(MoneyManager.instance.beetCost);
-        }
-        if(plantAnimation.tag == "Cabbage")
-        {
-            MoneyManager.instance.LoseMoney(MoneyManager.instance.cabbageCost);
-        }
-        if(plantAnimation.tag == "Carrot")
-        {
-            MoneyManager.instance.LoseMoney(MoneyManager.instance.carrotCost);
-        }
-        if(plantAnimation.tag == "Corn")
-        {
-            MoneyManager.instance.LoseMoney(MoneyManager.instance.cornCost);
-        }
-        if(plantAnimation.tag == "RedPepper")
-        {
-            MoneyManager.instance.LoseMoney(MoneyManager.instance.redPepperCost);
+            if(plantAnimation.tag == "Beet" && MoneyManager.instance.money >= MoneyManager.instance.beetCost)
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.beetCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+            }
+            if(plantAnimation.tag == "Cabbage" && MoneyManager.instance.money >= MoneyManager.instance.cabbageCost)
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.cabbageCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+            }
+            if(plantAnimation.tag == "Carrot" && MoneyManager.instance.money >= MoneyManager.instance.carrotCost)
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.carrotCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+            }
+            if(plantAnimation.tag == "Corn" && MoneyManager.instance.money >= MoneyManager.instance.cornCost)
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.cornCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+            }
+            if(plantAnimation.tag == "RedPepper" && MoneyManager.instance.money >= MoneyManager.instance.redPepperCost)
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.redPepperCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+            }
         }
     }
 
@@ -130,6 +136,39 @@ public class PlantSpawner : MonoBehaviour
             if(hit.collider.transform.parent.tag == "RedPepper")
             {
                 MoneyManager.instance.AddMoney(MoneyManager.instance.redPepperAmount);
+            }
+        }
+    }
+
+    void BuyPlot()//Buys the plot of land
+    {
+        RaycastHit hit;
+        Ray myRay = new Ray(transform.position, Vector3.down);
+        if(Physics.Raycast(myRay, out hit))
+        {
+            if(hit.collider.transform.parent.tag == "Buy10" && MoneyManager.instance.money >= MoneyManager.instance.plotTenCost)
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.plotTenCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(emptyPlot, hit.transform.position, transform.rotation);
+            }
+            if(hit.collider.transform.parent.tag == "Buy40" && MoneyManager.instance.money >= MoneyManager.instance.plotFortyCost)
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.plotFortyCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(emptyPlot, hit.transform.position, transform.rotation);
+            }
+            if(hit.collider.transform.parent.tag == "Buy70" && MoneyManager.instance.money >= MoneyManager.instance.plotSeventyCost)
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.plotSeventyCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(emptyPlot, hit.transform.position, transform.rotation);
+            }
+            if(hit.collider.transform.parent.tag == "Buy100" && MoneyManager.instance.money >= MoneyManager.instance.plotHundredCost)
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.plotHundredCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(emptyPlot, hit.transform.position, transform.rotation);
             }
         }
     }

@@ -281,6 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6b5e7e23cd124419d6ab999e0bdede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinSpeed: 0.5
+  spinSpeed: 100
   bobSpeed: 3
   bobHeight: 0.1

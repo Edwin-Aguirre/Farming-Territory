@@ -36,6 +36,13 @@ public class MoneyManager : MonoBehaviour
     public int redPepperAmount;
     public int redPepperCost;
 
+    [SerializeField]
+    public int plotTenCost;
+    public int plotFortyCost;
+    public int plotSeventyCost;
+    public int plotHundredCost;
+
+
     private void Awake() 
     {
         if(instance != null && instance != this)

@@ -194,7 +194,7 @@ Transform:
   - {fileID: 8541493088693839558}
   - {fileID: 543450653162174430}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &538054709
 PrefabInstance:
@@ -281,6 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6b5e7e23cd124419d6ab999e0bdede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinSpeed: 0.5
+  spinSpeed: 100
   bobSpeed: 3
   bobHeight: 0.1

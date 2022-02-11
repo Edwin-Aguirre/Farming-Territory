@@ -45,6 +45,7 @@ public class GameLoop : MonoBehaviour
         {
             winScreen.SetActive(true);
             Time.timeScale = 0;
+            PauseMenu.instance.pauseMenuUI.SetActive(false);
         }
     }
 
@@ -54,6 +55,7 @@ public class GameLoop : MonoBehaviour
         {
             loseScreen.SetActive(true);
             Time.timeScale = 0;
+            PauseMenu.instance.pauseMenuUI.SetActive(false);
         }
     }
 
