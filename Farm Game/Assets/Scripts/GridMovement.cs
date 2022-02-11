@@ -34,7 +34,7 @@ public class GridMovement : MonoBehaviour
     private IEnumerator MovePlayer(Vector3 direction)
     {
         isMoving = true;
-
+        
         float elapsedTime = 0;
 
         origPos = transform.position;

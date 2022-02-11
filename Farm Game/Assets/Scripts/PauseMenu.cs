@@ -9,9 +9,23 @@ public class PauseMenu : MonoBehaviour
     //Pressing the Esc key will pause the game and bring up a menu
 
     [SerializeField]
-    private GameObject pauseMenuUI;
+    public GameObject pauseMenuUI;
 
     public static bool isGamePaused = false;
+
+    public static PauseMenu instance;
+
+    private void Awake() 
+    {
+        if(instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     // Update is called once per frame
     void Update()
