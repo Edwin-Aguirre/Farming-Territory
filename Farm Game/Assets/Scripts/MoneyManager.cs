@@ -14,7 +14,13 @@ public class MoneyManager : MonoBehaviour
     public Text moneyText;
 
     [SerializeField]
-    public int money;
+    public Text multiplierText;
+
+    [SerializeField]
+    public float money;
+
+    [SerializeField]
+    public float multiplier;
 
     [SerializeField]
     public int beetAmount;
@@ -49,6 +55,13 @@ public class MoneyManager : MonoBehaviour
     public int pigCost;
     public int horseCost;
 
+    [SerializeField]
+    public float cowMultiplier;
+    public float sheepMultiplier;
+    public float chickenMultiplier;
+    public float pigMultiplier;
+    public float horseMultiplier;
+
 
     private void Awake() 
     {
@@ -65,7 +78,8 @@ public class MoneyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moneyText.text = "$" + money.ToString();
+        moneyText.text = money.ToString("C");
+        multiplierText.text = "x" + multiplier.ToString();
     }
 
     // Update is called once per frame
@@ -76,13 +90,13 @@ public class MoneyManager : MonoBehaviour
 
     public void AddMoney(int amount)
     {
-        money += amount;
-        moneyText.text = "$" + money.ToString();
+        money += amount * multiplier;
+        moneyText.text = money.ToString("C");
     }
 
     public void LoseMoney(int lose)
     {
         money -= lose;
-        moneyText.text = "$" + money.ToString();
+        moneyText.text = money.ToString("C");
     }
 }
