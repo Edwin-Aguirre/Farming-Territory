@@ -37,6 +37,13 @@ public class AnimalSpawner : MonoBehaviour
     [SerializeField]
     private float placeZ;
 
+    [SerializeField]
+    private int cowClone;
+    private int chickenClone;
+    private int sheepClone;
+    private int pigClone;
+    private int horseClone;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,17 +53,12 @@ public class AnimalSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        placeX = Random.Range(4.5f,8.1f);
-    
-        placeZ = Random.Range(2.7f,-2.7f);
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
-        }
         AnimalShopRaycast();
         ShopMovement();
         WallRightRaycast();
         WallLeftRaycast();
+        BuyAnimal();
+        MoneyManager.instance.multiplierText.text = "x" + MoneyManager.instance.multiplier.ToString();
     }
 
     private IEnumerator MovePlayer(Vector3 direction)
@@ -120,7 +122,7 @@ public class AnimalSpawner : MonoBehaviour
         }
     }
 
-    void AnimalShopRaycast()
+    void AnimalShopRaycast()//Uses a raycast to know what animal is selected and will spawn the animal that is detected
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.down);
@@ -145,6 +147,62 @@ public class AnimalSpawner : MonoBehaviour
             if(hit.collider.tag == "BuyHorse" && MoneyManager.instance.money >= MoneyManager.instance.horseCost)
             {
                 animal = horse;
+            }
+        }
+    }
+
+    void BuyAnimal()//Buys animal, takes away money, spawns it and also gives the multiplier.
+    {
+        RaycastHit hit;
+        Ray myRay = new Ray(transform.position, Vector3.down);
+        //These values are based on the size of the animal pen and randomly chooses a spot to spawn the animal.
+        placeX = Random.Range(4.5f,8.1f);
+        placeZ = Random.Range(2.7f,-2.7f);
+        if(Physics.Raycast(myRay, out hit))
+        {
+            if(hit.collider.tag == "BuyCow" && MoneyManager.instance.money >= MoneyManager.instance.cowCost && Input.GetKeyDown(KeyCode.X))
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.cowCost);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                cowClone++;//Used so that we know how many animals the player bought.
+                MoneyManager.instance.multiplier = MoneyManager.instance.cowMultiplier * cowClone;//Sets the multipler to the animal multipler and multiplies that by the amount of animals that were bought.
+            }
+        }
+        if(Physics.Raycast(myRay, out hit))
+        {
+            if(hit.collider.tag == "BuySheep" && MoneyManager.instance.money >= MoneyManager.instance.sheepCost && Input.GetKeyDown(KeyCode.X))
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.sheepCost);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                MoneyManager.instance.multiplier = MoneyManager.instance.sheepMultiplier;
+            }
+        }
+        if(Physics.Raycast(myRay, out hit))
+        {
+            if(hit.collider.tag == "BuyChicken" && MoneyManager.instance.money >= MoneyManager.instance.chickenCost && Input.GetKeyDown(KeyCode.X))
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.chickenCost);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                MoneyManager.instance.multiplier = MoneyManager.instance.chickenMultiplier;
+            }
+        }
+        if(Physics.Raycast(myRay, out hit))
+        {
+            if(hit.collider.tag == "BuyPig" && MoneyManager.instance.money >= MoneyManager.instance.pigCost && Input.GetKeyDown(KeyCode.X))
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.pigCost);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                MoneyManager.instance.multiplier = MoneyManager.instance.pigMultiplier;
+            }
+        }
+        if(Physics.Raycast(myRay, out hit))
+        {
+            if(hit.collider.tag == "BuyHorse" && MoneyManager.instance.money >= MoneyManager.instance.horseCost && Input.GetKeyDown(KeyCode.X))
+            {
+                MoneyManager.instance.LoseMoney(MoneyManager.instance.horseCost);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                horseClone++;
+                MoneyManager.instance.multiplier = MoneyManager.instance.horseMultiplier * horseClone;
             }
         }
     }

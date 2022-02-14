@@ -45,7 +45,7 @@ public class PlantSpawner : MonoBehaviour
         if(MoneyManager.instance.money <= 0)
         {
             MoneyManager.instance.money = 0;
-            MoneyManager.instance.moneyText.text = "$" + MoneyManager.instance.money.ToString();
+            MoneyManager.instance.moneyText.text = MoneyManager.instance.money.ToString("C");
         }
     }
 
