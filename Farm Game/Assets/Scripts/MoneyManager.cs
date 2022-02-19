@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MoneyManager : MonoBehaviour
 {
     //Written by Edwin Aguirre
-    //This is a WIP script that handles the currency in the game
+    //This is a script that handles the currency in the game
 
     public static MoneyManager instance;
 
@@ -79,7 +79,7 @@ public class MoneyManager : MonoBehaviour
     void Start()
     {
         moneyText.text = money.ToString("C");
-        multiplierText.text = "x" + multiplier.ToString();
+        multiplierText.text = "x" + multiplier.ToString("0.0");
     }
 
     // Update is called once per frame

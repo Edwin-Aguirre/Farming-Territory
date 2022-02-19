@@ -10,6 +10,8 @@ public class AnimalSpawner : MonoBehaviour
     private bool isMoving;
     private Vector3 origPos, targetPos;
     private float timeToMove = 0.2f;
+    private Vector3 moveRightUnits = new Vector3(0.9f,0,0);
+    private Vector3 moveLefttUnits = new Vector3(-0.9f,0,0);
 
     [SerializeField]
     private float rayDistance;
@@ -37,17 +39,10 @@ public class AnimalSpawner : MonoBehaviour
     [SerializeField]
     private float placeZ;
 
-    [SerializeField]
-    private int cowClone;
-    private int chickenClone;
-    private int sheepClone;
-    private int pigClone;
-    private int horseClone;
-
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -58,7 +53,7 @@ public class AnimalSpawner : MonoBehaviour
         WallRightRaycast();
         WallLeftRaycast();
         BuyAnimal();
-        MoneyManager.instance.multiplierText.text = "x" + MoneyManager.instance.multiplier.ToString();
+        MoneyManager.instance.multiplierText.text = "x" + MoneyManager.instance.multiplier.ToString("0.0");
     }
 
     private IEnumerator MovePlayer(Vector3 direction)
@@ -86,11 +81,11 @@ public class AnimalSpawner : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.C) && !isMoving)
         {
-            StartCoroutine(MovePlayer(new Vector3(0.9f,0,0)));
+            StartCoroutine(MovePlayer((moveRightUnits)));
         }
         if(Input.GetKey(KeyCode.Z) && !isMoving)
         {
-            StartCoroutine(MovePlayer(new Vector3(-0.9f,0,0)));
+            StartCoroutine(MovePlayer((moveLefttUnits)));
         }
     }
 
@@ -164,8 +159,7 @@ public class AnimalSpawner : MonoBehaviour
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.cowCost);
                 Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
-                cowClone++;//Used so that we know how many animals the player bought.
-                MoneyManager.instance.multiplier = MoneyManager.instance.cowMultiplier * cowClone;//Sets the multipler to the animal multipler and multiplies that by the amount of animals that were bought.
+                MoneyManager.instance.multiplier += MoneyManager.instance.cowMultiplier;//Sets the multipler to the animal multipler and multiplies that by the amount of animals that were bought.
             }
         }
         if(Physics.Raycast(myRay, out hit))
@@ -174,7 +168,7 @@ public class AnimalSpawner : MonoBehaviour
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.sheepCost);
                 Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
-                MoneyManager.instance.multiplier = MoneyManager.instance.sheepMultiplier;
+                MoneyManager.instance.multiplier += MoneyManager.instance.sheepMultiplier;
             }
         }
         if(Physics.Raycast(myRay, out hit))
@@ -183,7 +177,7 @@ public class AnimalSpawner : MonoBehaviour
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.chickenCost);
                 Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
-                MoneyManager.instance.multiplier = MoneyManager.instance.chickenMultiplier;
+                MoneyManager.instance.multiplier += MoneyManager.instance.chickenMultiplier;
             }
         }
         if(Physics.Raycast(myRay, out hit))
@@ -192,7 +186,7 @@ public class AnimalSpawner : MonoBehaviour
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.pigCost);
                 Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
-                MoneyManager.instance.multiplier = MoneyManager.instance.pigMultiplier;
+                MoneyManager.instance.multiplier += MoneyManager.instance.pigMultiplier;
             }
         }
         if(Physics.Raycast(myRay, out hit))
@@ -201,8 +195,7 @@ public class AnimalSpawner : MonoBehaviour
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.horseCost);
                 Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
-                horseClone++;
-                MoneyManager.instance.multiplier = MoneyManager.instance.horseMultiplier * horseClone;
+                MoneyManager.instance.multiplier += MoneyManager.instance.horseMultiplier;
             }
         }
     }
