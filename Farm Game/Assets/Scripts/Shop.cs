@@ -12,6 +12,9 @@ public class Shop : MonoBehaviour
     private Vector3 origPos, targetPos;
     private float timeToMove = 0.2f;
 
+    private Vector3 moveUpUnits = new Vector3(0,0,0.9f);
+    private Vector3 moveDownUnits = new Vector3(0,0,-0.9f);
+
     [SerializeField]
     private float rayDistance;
 
@@ -29,6 +32,7 @@ public class Shop : MonoBehaviour
 
     [SerializeField]
     private GameObject redPepperAnimation;
+
 
     // Start is called before the first frame update
     void Start()
@@ -71,11 +75,11 @@ public class Shop : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.E) && !isMoving)
         {
-            StartCoroutine(MovePlayer(new Vector3(0,0,0.9f)));
+            StartCoroutine(MovePlayer(moveUpUnits));
         }
         if(Input.GetKey(KeyCode.Q) && !isMoving)
         {
-            StartCoroutine(MovePlayer(new Vector3(0,0,-0.9f)));
+            StartCoroutine(MovePlayer(moveDownUnits));
         }
     }
 

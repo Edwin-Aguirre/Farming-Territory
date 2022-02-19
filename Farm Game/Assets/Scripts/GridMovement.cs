@@ -12,6 +12,11 @@ public class GridMovement : MonoBehaviour
     private Vector3 origPos, targetPos;
     private float timeToMove = 0.2f;
 
+    private Vector3 moveRightUnits = new Vector3(0.9f,0,0);
+    private Vector3 moveLefttUnits = new Vector3(-0.9f,0,0);
+    private Vector3 moveUpUnits = new Vector3(0,0,0.9f);
+    private Vector3 moveDownUnits = new Vector3(0,0,-0.9f);
+
     [SerializeField]
     private float rayDistance;
 
@@ -56,19 +61,19 @@ public class GridMovement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.W) && !isMoving)
         {
-            StartCoroutine(MovePlayer(new Vector3(0,0,0.9f)));
+            StartCoroutine(MovePlayer(moveUpUnits));
         }
         if(Input.GetKey(KeyCode.A) && !isMoving)
         {
-            StartCoroutine(MovePlayer(new Vector3(-0.9f,0,0)));
+            StartCoroutine(MovePlayer(moveLefttUnits));
         }
         if(Input.GetKey(KeyCode.S) && !isMoving)
         {
-            StartCoroutine(MovePlayer(new Vector3(0,0,-0.9f)));
+            StartCoroutine(MovePlayer(moveDownUnits));
         }
         if(Input.GetKey(KeyCode.D) && !isMoving)
         {
-            StartCoroutine(MovePlayer(new Vector3(0.9f,0,0)));
+            StartCoroutine(MovePlayer(moveRightUnits));
         }
     }
 
