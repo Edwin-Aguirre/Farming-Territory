@@ -19,6 +19,28 @@ public class PlantSpawner : MonoBehaviour
     [SerializeField]
     private GameObject emptyPlot;
 
+    //Temp
+    [SerializeField]
+    private GameObject vegetableSpawner;
+    [SerializeField]
+    private GameObject beet;
+    [SerializeField]
+    private GameObject cabbage;
+    [SerializeField]
+    private GameObject carrot;
+    [SerializeField]
+    private GameObject corn;
+    [SerializeField]
+    private GameObject redPepper;
+    [SerializeField]
+    private float placeX;
+    [SerializeField]
+    private float placeY;
+    [SerializeField]
+    private float placeZ;
+    [SerializeField]
+    private float chance;
+
 
     private void Awake() 
     {
@@ -41,6 +63,9 @@ public class PlantSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        placeX = Random.Range(4.5f,8.1f);
+        placeY = Random.Range(0, 2.6f);
+        placeZ = Random.Range(2.7f,-2.7f);
         MeshRaycast();
         if(MoneyManager.instance.money <= 0)
         {
@@ -120,22 +145,42 @@ public class PlantSpawner : MonoBehaviour
             if(hit.collider.transform.parent.tag == "Beet")
             {
                 MoneyManager.instance.AddMoney(MoneyManager.instance.beetAmount);
+                if(Random.value <= chance)
+                {
+                    Instantiate(beet, vegetableSpawner.transform.position = new Vector3(placeX, placeY, placeZ), transform.rotation);//When the player collects the vegetable, there is a chance of spawning that vegetable in the animal pen
+                }
             }
             if(hit.collider.transform.parent.tag == "Cabbage")
             {
                 MoneyManager.instance.AddMoney(MoneyManager.instance.cabbageAmount);
+                if(Random.value <= chance)
+                {
+                    Instantiate(cabbage, vegetableSpawner.transform.position = new Vector3(placeX, placeY, placeZ), transform.rotation);
+                }
             }
             if(hit.collider.transform.parent.tag == "Carrot")
             {
                 MoneyManager.instance.AddMoney(MoneyManager.instance.carrotAmount);
+                if(Random.value <= chance)
+                {
+                    Instantiate(carrot, vegetableSpawner.transform.position = new Vector3(placeX, placeY, placeZ), transform.rotation);
+                }
             }
             if(hit.collider.transform.parent.tag == "Corn")
             {
                 MoneyManager.instance.AddMoney(MoneyManager.instance.cornAmount);
+                if(Random.value <= chance)
+                {
+                    Instantiate(corn, vegetableSpawner.transform.position = new Vector3(placeX, placeY, placeZ), transform.rotation);
+                }
             }
             if(hit.collider.transform.parent.tag == "RedPepper")
             {
                 MoneyManager.instance.AddMoney(MoneyManager.instance.redPepperAmount);
+                if(Random.value <= chance)
+                {
+                    Instantiate(redPepper, vegetableSpawner.transform.position = new Vector3(placeX, placeY, placeZ), transform.rotation);
+                }
             }
         }
     }
