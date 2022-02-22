@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoneyManager : MonoBehaviour
+public class MoneyManager2 : MonoBehaviour
 {
     //Written by Edwin Aguirre
     //This is a script that handles the currency in the game
 
-    public static MoneyManager instance;
+    public static MoneyManager2 instance;
 
     [SerializeField]
-    public Text moneyText;
+    public Text moneyText2;
 
     [SerializeField]
-    public Text multiplierText;
+    public Text multiplierText2;
 
     [SerializeField]
-    public float money;
+    public float money2;
 
     [SerializeField]
-    public float multiplier;
+    public float multiplier2;
 
     [SerializeField]
     public int beetAmount;
@@ -78,8 +78,8 @@ public class MoneyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moneyText.text = "P1" + money.ToString("C");
-        multiplierText.text = "P1" + "x" + multiplier.ToString("0.0");
+        multiplierText2.text = "P2" + "x" + multiplier2.ToString("0.0");
+        moneyText2.text = "P2" + money2.ToString("C");
     }
 
     // Update is called once per frame
@@ -88,15 +88,15 @@ public class MoneyManager : MonoBehaviour
         
     }
 
-    public void AddMoney(int amount)
+    public void AddMoney2(int amount)
     {
-        money += amount * multiplier;
-        moneyText.text = "P1" + money.ToString("C");
+        money2 += amount * multiplier2;
+        moneyText2.text = "P2" + money2.ToString("C");
     }
 
-    public void LoseMoney(int lose)
+    public void LoseMoney2(int lose)
     {
-        money -= lose;
-        moneyText.text = "P1" + money.ToString("C");
+        money2 -= lose;
+        moneyText2.text = "P2" + money2.ToString("C");
     }
 }

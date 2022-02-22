@@ -41,6 +41,9 @@ public class PlantSpawner : MonoBehaviour
     [SerializeField]
     private float chance;
 
+    [SerializeField]
+    public int plotAmount;
+
 
     private void Awake() 
     {
@@ -196,24 +199,28 @@ public class PlantSpawner : MonoBehaviour
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.plotTenCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
+                plotAmount++;
             }
             if(hit.collider.transform.parent.tag == "Buy40" && MoneyManager.instance.money >= MoneyManager.instance.plotFortyCost)
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.plotFortyCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
+                plotAmount++;
             }
             if(hit.collider.transform.parent.tag == "Buy70" && MoneyManager.instance.money >= MoneyManager.instance.plotSeventyCost)
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.plotSeventyCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
+                plotAmount++;
             }
             if(hit.collider.transform.parent.tag == "Buy100" && MoneyManager.instance.money >= MoneyManager.instance.plotHundredCost)
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.plotHundredCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
+                plotAmount++;
             }
         }
     }
