@@ -123,14 +123,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7014747964125982434}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7089370074882163968}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7897077109616710577
 MonoBehaviour:
@@ -160,6 +160,17 @@ MonoBehaviour:
   emptyPlotMesh: {fileID: -2432090755550338912, guid: 7d694f25f02256646ba519ce7195c344, type: 3}
   plantAnimation: {fileID: 8481014958886325540, guid: 3bda06ead15102e438ade065e8703aec, type: 3}
   emptyPlot: {fileID: 6342695682462666436, guid: 6d1c18db1645e9e4a8bf748bc5ad1483, type: 3}
+  vegetableSpawner: {fileID: 0}
+  beet: {fileID: 5574808556944742744, guid: 874990b416f5ab945a72c50816912b1d, type: 3}
+  cabbage: {fileID: 7485977307499440347, guid: 4d7971ece4f20534dba928b650f0f036, type: 3}
+  carrot: {fileID: 3049252986589015225, guid: 1aa5aee429ab1d34d897bc2781c51c6f, type: 3}
+  corn: {fileID: 4240534797853007061, guid: 7d0f6ecfd3e3af14c889519f8405f2f9, type: 3}
+  redPepper: {fileID: 8409803258286309393, guid: bb98387fad6267d4bada38f4df91027d, type: 3}
+  placeX: 0
+  placeY: 0
+  placeZ: 0
+  chance: 0.3
+  plotAmount: 0
 --- !u!114 &7897077109616710582
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,10 @@ public class GameLoop : MonoBehaviour
     //This script handles the win/lose game loop
 
     [SerializeField]
-    private GameObject winScreen;
+    private GameObject p1WinScreen;
+
+    [SerializeField]
+    private GameObject p2WinScreen;
 
     [SerializeField]
     private GameObject loseScreen;
@@ -39,11 +42,17 @@ public class GameLoop : MonoBehaviour
         LoseGame();
     }
 
-    void WinGame()//If the player earns enough $, then you win
+    void WinGame()//If either player buys out all the plots of land, then they win
     {
-        if(MoneyManager.instance.money >= amountToWin)
+        if(PlantSpawner.instance.plotAmount == amountToWin)
         {
-            winScreen.SetActive(true);
+            p1WinScreen.SetActive(true);
+            Time.timeScale = 0;
+            PauseMenu.instance.pauseMenuUI.SetActive(false);
+        }
+        else if(PlayerTwo.instance.plotAmount == amountToWin)
+        {
+            p2WinScreen.SetActive(true);
             Time.timeScale = 0;
             PauseMenu.instance.pauseMenuUI.SetActive(false);
         }
