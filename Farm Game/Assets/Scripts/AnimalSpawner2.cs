@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimalSpawner2 : MonoBehaviour
 {
     //Written by Edwin Aguirre
-    //This script allows the player to select and buy an animal
+    //This script allows player 2 to select and buy an animal
     
     private bool isMoving;
     private Vector3 origPos, targetPos;
@@ -77,7 +77,7 @@ public class AnimalSpawner2 : MonoBehaviour
         isMoving = false;
     }
 
-    void ShopMovement()//Moving with wasd in a grid layout
+    void ShopMovement()//Moves the Shop selector for player 2 with / and ,
     {
         if(Input.GetKey(KeyCode.Slash) && !isMoving)
         {
@@ -150,7 +150,7 @@ public class AnimalSpawner2 : MonoBehaviour
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.down);
-        //These values are based on the size of the animal pen and randomly chooses a spot to spawn the animal.
+        //These values are based on the size of player 2 animal pen and randomly chooses a spot to spawn the animal.
         placeX = Random.Range(4.5f,8.1f);
         placeZ = Random.Range(4.5f,9.9f);
         if(Physics.Raycast(myRay, out hit))
@@ -159,7 +159,7 @@ public class AnimalSpawner2 : MonoBehaviour
             {
                 MoneyManager2.instance.LoseMoney2(MoneyManager2.instance.cowCost);
                 Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
-                MoneyManager2.instance.multiplier2 += MoneyManager2.instance.cowMultiplier;//Sets the multipler to the animal multipler and multiplies that by the amount of animals that were bought.
+                MoneyManager2.instance.multiplier2 += MoneyManager2.instance.cowMultiplier;//Sets the multipler to the animal multipler and adds that by the amount of animals that were bought.
             }
         }
         if(Physics.Raycast(myRay, out hit))

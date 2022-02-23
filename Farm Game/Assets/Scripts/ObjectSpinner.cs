@@ -5,7 +5,8 @@ using UnityEngine;
 public class ObjectSpinner : MonoBehaviour
 {
     //Written by Edwin Aguirre
-    //This script spins objects;
+    //This script spins and bobs objects;
+    //Used for the Icons in game
     
     [SerializeField]
     private float spinSpeed;

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class MoneyManager2 : MonoBehaviour
 {
     //Written by Edwin Aguirre
-    //This is a script that handles the currency in the game
+    //This is a script that handles the currency in the game for Player 2
+    //Everything is public because they are used in other scripts
 
     public static MoneyManager2 instance;
 
@@ -78,8 +79,8 @@ public class MoneyManager2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        multiplierText2.text = "P2" + "x" + multiplier2.ToString("0.0");
-        moneyText2.text = "P2" + money2.ToString("C");
+        multiplierText2.text = "P2 " + "x" + multiplier2.ToString("0.0");
+        moneyText2.text = "P2 " + money2.ToString("C");
     }
 
     // Update is called once per frame
@@ -91,12 +92,12 @@ public class MoneyManager2 : MonoBehaviour
     public void AddMoney2(int amount)
     {
         money2 += amount * multiplier2;
-        moneyText2.text = "P2" + money2.ToString("C");
+        moneyText2.text = "P2 " + money2.ToString("C");
     }
 
     public void LoseMoney2(int lose)
     {
         money2 -= lose;
-        moneyText2.text = "P2" + money2.ToString("C");
+        moneyText2.text = "P2 " + money2.ToString("C");
     }
 }

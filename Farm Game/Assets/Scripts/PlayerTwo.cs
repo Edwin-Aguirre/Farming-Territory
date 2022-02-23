@@ -31,7 +31,6 @@ public class PlayerTwo : MonoBehaviour
     [SerializeField]
     private GameObject emptyPlot;
 
-    //Temp
     [SerializeField]
     private GameObject vegetableSpawner;
     [SerializeField]
@@ -93,7 +92,7 @@ public class PlayerTwo : MonoBehaviour
         if (mm.money2 <= 0)
         {
             mm.money2 = 0;
-            mm.moneyText2.text = "P2" + mm.money2.ToString("C");
+            mm.moneyText2.text = "P2 " + mm.money2.ToString("C");
         }
     }
 
@@ -118,7 +117,7 @@ public class PlayerTwo : MonoBehaviour
         isMoving = false;
     }
 
-    private void PlayerTwoMovement()//Moving with wasd in a grid layout
+    private void PlayerTwoMovement()//Moving with arrow keys in a grid layout
     {
         if (Input.GetKey(KeyCode.UpArrow) && !isMoving)
         {
@@ -205,7 +204,7 @@ public class PlayerTwo : MonoBehaviour
             {
                 BuyPlot2();
             }
-            if (hit.collider.tag == "Plant" && Input.GetKeyDown(KeyCode.Return))//If the player has enough money, they can plant a vegetable by pressing space
+            if (hit.collider.tag == "Plant" && Input.GetKeyDown(KeyCode.Return))//If the player has enough money, they can plant a vegetable by pressing return/enter key
             {
                 BuyVegetable2();
             }

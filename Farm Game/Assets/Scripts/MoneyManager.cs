@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class MoneyManager : MonoBehaviour
 {
     //Written by Edwin Aguirre
-    //This is a script that handles the currency in the game
+    //This is a script that handles the currency in the game for Player 1
+    //Everything is public because they are used in other scripts
 
     public static MoneyManager instance;
 
@@ -78,8 +79,8 @@ public class MoneyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moneyText.text = "P1" + money.ToString("C");
-        multiplierText.text = "P1" + "x" + multiplier.ToString("0.0");
+        moneyText.text = "P1 " + money.ToString("C");
+        multiplierText.text = "P1 " + "x" + multiplier.ToString("0.0");
     }
 
     // Update is called once per frame
@@ -91,12 +92,12 @@ public class MoneyManager : MonoBehaviour
     public void AddMoney(int amount)
     {
         money += amount * multiplier;
-        moneyText.text = "P1" + money.ToString("C");
+        moneyText.text = "P1 " + money.ToString("C");
     }
 
     public void LoseMoney(int lose)
     {
         money -= lose;
-        moneyText.text = "P1" + money.ToString("C");
+        moneyText.text = "P1 " + money.ToString("C");
     }
 }

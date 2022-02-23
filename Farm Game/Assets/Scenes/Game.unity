@@ -359,7 +359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 155, y: 35}
+  m_AnchoredPosition: {x: 165, y: 35}
   m_SizeDelta: {x: 75, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &20664426
@@ -939,6 +939,8 @@ MonoBehaviour:
   m_Targets: []
   player1: {fileID: 1204957101}
   player2: {fileID: 457425006}
+  p1Farm: {fileID: 941472453}
+  p2Farm: {fileID: 1084013746}
 --- !u!4 &67866045
 Transform:
   m_ObjectHideFlags: 0
@@ -14017,7 +14019,7 @@ MonoBehaviour:
     stationaryBlending: 0
     motionBlending: 0
   subpixelMorphologicalAntialiasing:
-    quality: 0
+    quality: 2
   fastApproximateAntialiasing:
     fastMode: 1
     keepAlpha: 1
@@ -15818,7 +15820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 100}
+  m_AnchoredPosition: {x: 160, y: 100}
   m_SizeDelta: {x: 75, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1101487261
@@ -32431,6 +32433,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2131702150}
     - target: {fileID: 4145443242333132200, guid: bf893d2611a74e74e9ba7bdf88e3a997, type: 3}
+      propertyPath: chance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145443242333132200, guid: bf893d2611a74e74e9ba7bdf88e3a997, type: 3}
       propertyPath: vegetableSpawner
       value: 
       objectReference: {fileID: 1434631429}
@@ -32535,6 +32541,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7643370216011854936, guid: 3ee35157e91062b4c80b6924a25b0eea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897077109616710583, guid: 3ee35157e91062b4c80b6924a25b0eea, type: 3}
+      propertyPath: chance
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7897077109616710583, guid: 3ee35157e91062b4c80b6924a25b0eea, type: 3}

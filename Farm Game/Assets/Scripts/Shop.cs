@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     //Written by Edwin Aguirre
-    //This script handles the Shop in the game.
+    //This script handles the player 1 Shop in the game.
     //Use Q and E to move indicator on a vegetable on the left, and it will let you buy them.
 
     private bool isMoving;
@@ -71,7 +71,7 @@ public class Shop : MonoBehaviour
     }
     
 
-    void ShopMovement()//Moving with wasd in a grid layout
+    void ShopMovement()//Move the shop selector with E and Q
     {
         if(Input.GetKey(KeyCode.E) && !isMoving)
         {
