@@ -19,7 +19,6 @@ public class PlantSpawner : MonoBehaviour
     [SerializeField]
     private GameObject emptyPlot;
 
-    //Temp
     [SerializeField]
     private GameObject vegetableSpawner;
     [SerializeField]
@@ -73,7 +72,7 @@ public class PlantSpawner : MonoBehaviour
         if(MoneyManager.instance.money <= 0)
         {
             MoneyManager.instance.money = 0;
-            MoneyManager.instance.moneyText.text = MoneyManager.instance.money.ToString("C");
+            MoneyManager.instance.moneyText.text = "P1 " + MoneyManager.instance.money.ToString("C");
         }
     }
 

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Shop2 : MonoBehaviour
 {
     //Written by Edwin Aguirre
-    //This script handles the Shop in the game.
-    //Use Q and E to move indicator on a vegetable on the left, and it will let you buy them.
+    //This script handles the player 2 Shop in the game.
+    //Use [ and \ to move indicator on a vegetable on the left, and it will let you buy them.
 
     private bool isMoving;
     private Vector3 origPos, targetPos;
@@ -74,13 +74,13 @@ public class Shop2 : MonoBehaviour
     }
     
 
-    void ShopMovement()//Moving with wasd in a grid layout
+    void ShopMovement()//Move the shop selector with \ and [
     {
         if(Input.GetKey(KeyCode.Backslash) && !isMoving)
         {
             StartCoroutine(MovePlayer(moveUpUnits));
         }
-        if(Input.GetKey(KeyCode.RightBracket) && !isMoving)
+        if(Input.GetKey(KeyCode.LeftBracket) && !isMoving)
         {
             StartCoroutine(MovePlayer(moveDownUnits));
         }
