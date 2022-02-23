@@ -5,8 +5,8 @@ using UnityEngine;
 public class VegetableShopIndicators2 : MonoBehaviour
 {
     //Written by Edwin Aguirre
-    //This script visually helps the player know what they can buy
-    //If you don't have enough money, then an x will appear, otherwise a check will appear 
+    //This script visually helps player 2 know what they can buy
+    //If you don't have enough money, then an x will appear, otherwise a arrow will appear 
 
     [SerializeField]
     private GameObject[] arrow;

@@ -58,7 +58,7 @@ public class GameLoop : MonoBehaviour
         }
     }
 
-    public void LoseGame()//If the player !earn enough $, then the lose screen appears
+    public void LoseGame()//If the timer runs out, then the lose screen appears
     {
         if(Timer.instance.timeValue <= 0)
         {

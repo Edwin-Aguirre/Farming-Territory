@@ -23,8 +23,13 @@ public class CameraControl : MonoBehaviour
     private GameObject player1;
     [SerializeField]
     private GameObject player2;
-    private bool isP1NotActive;
-    private bool isP2NotActive;
+    private bool isP1NotActive;//These are to save performance and also lets you play alone without having extra things on screen
+    private bool isP2NotActive;//These are to save performance and also lets you play alone without having extra things on screen
+
+    [SerializeField]
+    private GameObject p1Farm;
+    [SerializeField]
+    private GameObject p2Farm;
 
 
     private Camera m_Camera;                        
@@ -58,7 +63,7 @@ public class CameraControl : MonoBehaviour
         Zoom();
     }
 
-    private void Player1Camera()
+    private void Player1Camera()//Focuses the camera on player 1
     {
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
@@ -66,13 +71,14 @@ public class CameraControl : MonoBehaviour
             {
                 m_Targets.Add(player1.transform);
                 isP1NotActive = false;
-                m_ScreenEdgeBuffer = 2f;
-                m_MinSize = 3f;
+                m_ScreenEdgeBuffer = 3f;
+                m_MinSize = 4f;
+                p2Farm.SetActive(false);
             }
         }
     }
 
-    private void Player2Camera()
+    private void Player2Camera()//Focuses the camera on player 2
     {
         if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -80,18 +86,21 @@ public class CameraControl : MonoBehaviour
             {
                 m_Targets.Add(player2.transform);
                 isP2NotActive = false;
-                m_ScreenEdgeBuffer = 2f;
-                m_MinSize = 3f;
+                m_ScreenEdgeBuffer = 3f;
+                m_MinSize = 4f;
+                p1Farm.SetActive(false);
             }
         }
     }
 
-    private void MultiplayerCamera()
+    private void MultiplayerCamera()//Focuses the camera on both players
     {
         if(!isP1NotActive && !isP2NotActive)
         {
-            m_ScreenEdgeBuffer = 4f;
-            m_MinSize = 5f;
+            m_ScreenEdgeBuffer = 5f;
+            m_MinSize = 6f;
+            p1Farm.SetActive(true);
+            p2Farm.SetActive(true);
         }
     }
 
