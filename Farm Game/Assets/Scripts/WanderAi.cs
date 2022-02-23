@@ -4,19 +4,20 @@ using UnityEngine;
 
 
 
-public class WanderingBehavior : MonoBehaviour
+public class WanderAi : MonoBehaviour
 {
-    
+
     public float movespeed = 2f;
-    public float waitTime = 0f;
     public float movingTimeLimit = 0f;
+    private float waitTime;
     private Rigidbody body;
     private Vector3 destination;
     private Vector3 cPosition;    //Current position
     private float ranx;
     private float ranz;
     bool isMoving = false;
-    
+    bool startMove = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,39 +30,35 @@ public class WanderingBehavior : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        movingTimeLimit = waitTime;
-        movingTimeLimit -= Time.deltaTime;
-        if (cPosition == destination ^ movingTimeLimit <= 0)
-        {
-            Debug.Log("Waiting");
-            StartCoroutine(Wait());
-            isMoving = false;
-            movingTimeLimit = waitTime;
-
-            
-        }
-
-        else
-        {
-            Debug.Log("New destination");
-            StartCoroutine(Wait());
-            moveCharacter(destination);
-        }
+        StartCoroutine(Move());
 
     }
 
-    
+
     private void moveCharacter(Vector3 direction)
     {
         transform.LookAt(direction);
-        transform.position = Vector3.MoveTowards(transform.position, direction, 1);
+        transform.position = Vector3.MoveTowards(transform.position, direction, movespeed * Time.deltaTime);
     }
 
-    IEnumerator Wait()
+    IEnumerator Move()
     {
-        if (isMoving == true)
+        if (startMove == true)
         {
-            yield return new WaitForSeconds(movingTimeLimit);
+            moveCharacter(destination);
+            startMove = false;
+            yield return null;
+        }
+        else if (isMoving == true)
+        {
+            waitTime -= Time.deltaTime;
+
+            if (waitTime <= 0)
+            {
+                isMoving = false;
+                waitTime = movingTimeLimit;
+            }
+            
         }
 
         else
@@ -69,12 +66,13 @@ public class WanderingBehavior : MonoBehaviour
             ranx = Random.Range(3, 7);
             ranz = Random.Range(-3, 3);
             destination = new Vector3(ranx, 0, ranz);
-            
+
             isMoving = true;
-            yield return new WaitForSeconds(waitTime);
+            startMove = true;
+            
         }
 
-        
+
 
     }
 }
