@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class WanderAi : MonoBehaviour
 {
-
-    public float movespeed = 2f;
-    public float movingTimeLimit = 0f;
+    //Written by Bryan Castaneda and edited by Edwin Aguirre
+    [SerializeField]
+    private float movespeed = 2f;
+    [SerializeField]
+    private float movingTimeLimit = 0f;
     private float waitTime;
     private Rigidbody body;
     private Vector3 destination;
     private Vector3 cPosition;    //Current position
     private float ranx;
     private float ranz;
-    bool isMoving = false;
-    bool startMove = false;
-
+    private bool isMoving = false;
+    private bool startMove = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -28,17 +28,26 @@ public class WanderAi : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
         StartCoroutine(Move());
-
+        transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * movespeed);
+        if(Vector3.Distance(transform.position, destination) <= 0.01f)
+        {
+            ranx = Random.Range(0,10);
+            ranz = Random.Range(-20,20);
+            destination = new Vector3(ranx, 0.1f, ranz);
+            isMoving = true;
+            startMove = true;
+        }
     }
 
 
     private void moveCharacter(Vector3 direction)
     {
-        transform.LookAt(direction);
-        transform.position = Vector3.MoveTowards(transform.position, direction, movespeed * Time.deltaTime);
+        //transform.LookAt(direction);
+        // this.transform.parent.LookAt(direction, Vector3.up);
+        //transform.position = Vector3.MoveTowards(transform.position, direction, movespeed * Time.deltaTime);
     }
 
     IEnumerator Move()
@@ -60,19 +69,14 @@ public class WanderAi : MonoBehaviour
             }
             
         }
-
         else
         {
-            ranx = Random.Range(3, 7);
-            ranz = Random.Range(-3, 3);
+            ranx = Random.Range(0,10);
+            ranz = Random.Range(-20,20);
             destination = new Vector3(ranx, 0, ranz);
 
             isMoving = true;
             startMove = true;
-            
         }
-
-
-
     }
 }
