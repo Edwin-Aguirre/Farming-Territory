@@ -117,13 +117,7 @@ public class WanderAi : MonoBehaviour
             startMove = true;
         }  
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "crop")
-        {
-            Destroy(gameObject);
-        }
-    }
 }
+
+
 
