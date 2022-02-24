@@ -9,6 +9,9 @@ public class WanderAi : MonoBehaviour
     private float movespeed = 2f;
     [SerializeField]
     private float movingTimeLimit = 0f;
+    private GameObject[] crops;
+    private Transform form;
+    private Transform nearestCrop;
     private float waitTime;
     private Rigidbody body;
     private Vector3 destination;
@@ -30,7 +33,13 @@ public class WanderAi : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         StartCoroutine(Move());
+
+        if (FindCrops() != null)
+        {
+            destination = form.position;
+        }
         transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * movespeed);
         if(Vector3.Distance(transform.position, destination) <= 0.01f)
         {
@@ -48,6 +57,35 @@ public class WanderAi : MonoBehaviour
         //transform.LookAt(direction);
         // this.transform.parent.LookAt(direction, Vector3.up);
         //transform.position = Vector3.MoveTowards(transform.position, direction, movespeed * Time.deltaTime);
+    }
+
+    private Transform FindCrops()
+    {
+        crops = GameObject.FindGameObjectsWithTag("Crop");
+        float nearestCrop = Mathf.Infinity;
+        form = null;
+
+        if (crops.Length >= 1)
+        {
+            foreach (GameObject crop in crops)
+            {
+                float distance;
+                distance = Vector3.Distance(transform.position, crop.transform.position);
+                if (distance < nearestCrop)
+                {
+                    nearestCrop = distance;
+                    form = crop.transform;
+                }
+
+            }
+            return form;
+        }
+
+        else
+        {
+            return null;
+        }
+        
     }
 
     IEnumerator Move()
@@ -77,6 +115,15 @@ public class WanderAi : MonoBehaviour
 
             isMoving = true;
             startMove = true;
+        }  
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "crop")
+        {
+            Destroy(gameObject);
         }
     }
 }
+
