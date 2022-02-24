@@ -22,6 +22,22 @@ public class CropDestroyer : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "BuySheep")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "BuyChicken")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "BuyPig")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "BuyHorse")
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

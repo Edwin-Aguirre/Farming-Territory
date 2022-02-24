@@ -34116,7 +34116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1101487261}
   multiplierText: {fileID: 1841371429}
-  money: 10000
+  money: 1
   multiplier: 1
   beetAmount: 3
   beetCost: 1
@@ -34202,7 +34202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText2: {fileID: 20664426}
   multiplierText2: {fileID: 28907459}
-  money2: 10000
+  money2: 1
   multiplier2: 1
   beetAmount: 3
   beetCost: 1
@@ -34466,7 +34466,7 @@ PrefabInstance:
       objectReference: {fileID: 2131702150}
     - target: {fileID: 4145443242333132200, guid: bf893d2611a74e74e9ba7bdf88e3a997, type: 3}
       propertyPath: chance
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4145443242333132200, guid: bf893d2611a74e74e9ba7bdf88e3a997, type: 3}
       propertyPath: vegetableSpawner
@@ -34577,7 +34577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7897077109616710583, guid: 3ee35157e91062b4c80b6924a25b0eea, type: 3}
       propertyPath: chance
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7897077109616710583, guid: 3ee35157e91062b4c80b6924a25b0eea, type: 3}
       propertyPath: vegetableSpawner
