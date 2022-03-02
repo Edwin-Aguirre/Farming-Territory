@@ -15,7 +15,13 @@ public class MoneyManager2 : MonoBehaviour
     public Text moneyText2;
 
     [SerializeField]
+    public Text AIText;
+
+    [SerializeField]
     public Text multiplierText2;
+
+    [SerializeField]
+    public Text AImultiplierText;
 
     [SerializeField]
     public float money2;
@@ -81,6 +87,8 @@ public class MoneyManager2 : MonoBehaviour
     {
         multiplierText2.text = "P2 " + "x" + multiplier2.ToString("0.0");
         moneyText2.text = "P2 " + money2.ToString("C");
+        AImultiplierText.text = "AI " + "x" + multiplier2.ToString("0.0");
+        AIText.text = "AI " + money2.ToString("C");
     }
 
     // Update is called once per frame
@@ -93,11 +101,13 @@ public class MoneyManager2 : MonoBehaviour
     {
         money2 += amount * multiplier2;
         moneyText2.text = "P2 " + money2.ToString("C");
+        AIText.text = "AI " + money2.ToString("C");
     }
 
     public void LoseMoney2(int lose)
     {
         money2 -= lose;
         moneyText2.text = "P2 " + money2.ToString("C");
+        AIText.text = "AI " + money2.ToString("C");
     }
 }

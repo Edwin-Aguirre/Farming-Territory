@@ -12,10 +12,25 @@ public class MainMenu : MonoBehaviour
     private GameObject htpMenu;
     [SerializeField]
     private GameObject mainMenu;
+    [SerializeField]
+    private GameObject playMenu;
+
+    private void Update() 
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            BackButton();
+        }
+    }
     
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void PlayAI()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void QuitGame()
@@ -33,6 +48,14 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
         mainMenu.SetActive(true);
+        htpMenu.SetActive(false);
+        playMenu.SetActive(false);
+    }
+
+    public void PlayMenu()
+    {
+        playMenu.SetActive(true);
+        mainMenu.SetActive(false);
         htpMenu.SetActive(false);
     }
 }

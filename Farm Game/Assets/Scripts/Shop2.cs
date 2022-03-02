@@ -19,22 +19,26 @@ public class Shop2 : MonoBehaviour
     private float rayDistance;
 
     [SerializeField]
-    private GameObject beetAnimation;
+    public GameObject beetAnimation;
 
     [SerializeField]
-    private GameObject cabbageAnimation;
+    public GameObject cabbageAnimation;
 
     [SerializeField]
-    private GameObject carrotAnimation;
+    public GameObject carrotAnimation;
 
     [SerializeField]
-    private GameObject cornAnimation;
+    public GameObject cornAnimation;
 
     [SerializeField]
-    private GameObject redPepperAnimation;
+    public GameObject redPepperAnimation;
 
     public MoneyManager2 mm;
     public PlayerTwo p2;
+
+    private int randomValue;
+    private float moveRate = 1f;
+    private float nextMove;
 
 
     // Start is called before the first frame update
@@ -141,5 +145,38 @@ public class Shop2 : MonoBehaviour
                 PlayerTwo.instance.plantAnimation = redPepperAnimation;
             }
         }
+    }
+
+    public void AIShop()
+    {
+        ShopRaycast2();
+
+        randomValue = Random.Range(1,5);
+        if(randomValue == 1 && Time.time > nextMove && !isMoving)
+        {
+            nextMove = Time.time + moveRate;
+            StartCoroutine(MovePlayer(moveUpUnits));
+        }
+        else if(randomValue == 2 && Time.time > nextMove && !isMoving)
+        {
+            nextMove = Time.time + moveRate;
+            StartCoroutine(MovePlayer(moveDownUnits));
+        }
+        else if(randomValue == 3 && Time.time > nextMove && !isMoving)
+        {
+            nextMove = Time.time + moveRate;
+            StartCoroutine(MovePlayer(moveDownUnits));
+        }
+        else if(randomValue == 4 && Time.time > nextMove && !isMoving) 
+        {
+            nextMove = Time.time + moveRate;
+            StartCoroutine(MovePlayer(moveUpUnits));
+        }
+        else if(randomValue == 5 && Time.time > nextMove && !isMoving) 
+        {
+            nextMove = Time.time + moveRate;
+            StartCoroutine(MovePlayer(moveUpUnits));
+        }
+
     }
 }

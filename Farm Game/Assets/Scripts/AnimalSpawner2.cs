@@ -54,6 +54,7 @@ public class AnimalSpawner2 : MonoBehaviour
         WallLeftRaycast();
         BuyAnimal();
         MoneyManager2.instance.multiplierText2.text = "P2 " + "x" + MoneyManager2.instance.multiplier2.ToString("0.0");
+        MoneyManager2.instance.AImultiplierText.text = "AI " + "x" + MoneyManager2.instance.multiplier2.ToString("0.0");
     }
 
     private IEnumerator MovePlayer(Vector3 direction)

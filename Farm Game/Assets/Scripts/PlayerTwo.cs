@@ -29,7 +29,7 @@ public class PlayerTwo : MonoBehaviour
     public GameObject plantAnimation;
 
     [SerializeField]
-    private GameObject emptyPlot;
+    public GameObject emptyPlot;
 
     [SerializeField]
     private GameObject vegetableSpawner;
@@ -44,11 +44,11 @@ public class PlayerTwo : MonoBehaviour
     [SerializeField]
     private GameObject redPepper;
     [SerializeField]
-    private float placeX;
+    public float placeX;
     [SerializeField]
-    private float placeY;
+    public float placeY;
     [SerializeField]
-    private float placeZ;
+    public float placeZ;
     [SerializeField]
     private float chance;
 
@@ -96,7 +96,7 @@ public class PlayerTwo : MonoBehaviour
         }
     }
 
-    private IEnumerator MovePlayer(Vector3 direction)
+    public IEnumerator MovePlayer(Vector3 direction)
     {
         isMoving = true;
         
@@ -217,7 +217,7 @@ public class PlayerTwo : MonoBehaviour
         }
     }
 
-    void BuyVegetable2()//Takes away money when each vegetable is bought by planting it
+    public void BuyVegetable2()//Takes away money when each vegetable is bought by planting it
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.down);
@@ -256,7 +256,7 @@ public class PlayerTwo : MonoBehaviour
         }
     }
 
-    void CollectVegetable2()//Collects the vegetable and gives player money
+    public void CollectVegetable2()//Collects the vegetable and gives player money
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.down);
@@ -305,7 +305,7 @@ public class PlayerTwo : MonoBehaviour
         }
     }
 
-    void BuyPlot2()//Buys the plot of land
+    public void BuyPlot2()//Buys the plot of land
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.down);

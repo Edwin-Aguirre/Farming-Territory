@@ -27,6 +27,9 @@ public class CameraControl : MonoBehaviour
     private bool isP2NotActive;//These are to save performance and also lets you play alone without having extra things on screen
 
     [SerializeField]
+    private bool isAIActive;
+
+    [SerializeField]
     private GameObject p1Farm;
     [SerializeField]
     private GameObject p2Farm;
@@ -54,6 +57,7 @@ public class CameraControl : MonoBehaviour
         Player1Camera();
         Player2Camera();
         MultiplayerCamera();
+        AICamera();
     }
 
 
@@ -90,6 +94,19 @@ public class CameraControl : MonoBehaviour
                 m_MinSize = 4f;
                 p1Farm.SetActive(false);
             }
+        }
+    }
+
+    private void AICamera()
+    {
+        if(isAIActive)
+        {
+            isP1NotActive = false;
+            isP2NotActive = false;
+            m_Targets.Add(player1.transform);
+            isAIActive = false;
+            m_Targets.Add(player2.transform);
+            isAIActive = false;
         }
     }
 
