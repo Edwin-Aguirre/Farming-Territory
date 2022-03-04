@@ -147,6 +147,7 @@ public class PlayerTwo : MonoBehaviour
             if(hit.collider.tag == "WallRight")
             {
                 targetPos = origPos;
+                SoundManagerScript.PlaySound("bong_001");
             }
             
         }
@@ -161,6 +162,7 @@ public class PlayerTwo : MonoBehaviour
             if(hit.collider.tag == "WallLeft")
             {
                 targetPos = origPos;
+                SoundManagerScript.PlaySound("bong_001");
             }
             
         }
@@ -175,6 +177,7 @@ public class PlayerTwo : MonoBehaviour
             if(hit.collider.tag == "WallUp")
             {
                 targetPos = origPos;
+                SoundManagerScript.PlaySound("bong_001");
             }
             
         }
@@ -189,6 +192,7 @@ public class PlayerTwo : MonoBehaviour
             if(hit.collider.tag == "WallDown")
             {
                 targetPos = origPos;
+                SoundManagerScript.PlaySound("bong_001");
             }
             
         }

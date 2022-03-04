@@ -98,6 +98,7 @@ public class AnimalSpawner : MonoBehaviour
             if(hit.collider.tag == "WallRight")
             {
                 targetPos = origPos;
+                SoundManagerScript.PlaySound("bong_001");
             }
             
         }
@@ -112,6 +113,7 @@ public class AnimalSpawner : MonoBehaviour
             if(hit.collider.tag == "WallLeft")
             {
                 targetPos = origPos;
+                SoundManagerScript.PlaySound("bong_001");
             }
             
         }

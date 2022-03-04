@@ -19,7 +19,16 @@ public class MainMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            BackButton();
+            if(htpMenu.activeInHierarchy)
+            {
+                htpMenu.SetActive(false);
+                mainMenu.SetActive(true);
+            }
+            if(playMenu.activeInHierarchy)
+            {
+                playMenu.SetActive(false);
+                mainMenu.SetActive(true);
+            }
         }
     }
     

@@ -95,6 +95,7 @@ public class PlantSpawner : MonoBehaviour
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
                 CollectVegetable();
+                SoundManagerScript.PlaySound("footstep_grass_004");
             }
         }
     }
@@ -110,30 +111,35 @@ public class PlantSpawner : MonoBehaviour
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.beetCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
             if(plantAnimation.tag == "Cabbage" && MoneyManager.instance.money >= MoneyManager.instance.cabbageCost)
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.cabbageCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
             if(plantAnimation.tag == "Carrot" && MoneyManager.instance.money >= MoneyManager.instance.carrotCost)
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.carrotCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
             if(plantAnimation.tag == "Corn" && MoneyManager.instance.money >= MoneyManager.instance.cornCost)
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.cornCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
             if(plantAnimation.tag == "RedPepper" && MoneyManager.instance.money >= MoneyManager.instance.redPepperCost)
             {
                 MoneyManager.instance.LoseMoney(MoneyManager.instance.redPepperCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
         }
     }

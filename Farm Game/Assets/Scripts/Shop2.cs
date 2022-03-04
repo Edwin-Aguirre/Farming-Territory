@@ -99,6 +99,7 @@ public class Shop2 : MonoBehaviour
             if(hit.collider.tag == "WallUp")
             {
                 targetPos = origPos;
+                SoundManagerScript.PlaySound("bong_001");
             }
             
         }
@@ -113,6 +114,7 @@ public class Shop2 : MonoBehaviour
             if(hit.collider.tag == "WallDown")
             {
                 targetPos = origPos;
+                SoundManagerScript.PlaySound("bong_001");
             }
             
         }

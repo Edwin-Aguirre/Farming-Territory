@@ -70,7 +70,8 @@ public class GameLoop : MonoBehaviour
 
     public void TryAgain()//Clicking the try again button reloads the scene
     {
-        SceneManager.LoadScene(1);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     //Shows the objective text for 3 seconds
