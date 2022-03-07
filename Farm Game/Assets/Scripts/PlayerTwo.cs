@@ -119,21 +119,21 @@ public class PlayerTwo : MonoBehaviour
 
     private void PlayerTwoMovement()//Moving with arrow keys in a grid layout
     {
-        if (Input.GetKey(KeyCode.UpArrow) && !isMoving)
+        if(Input.GetButton("P2MoveUp") && !isMoving || Input.GetAxisRaw("P2MoveUp") > 0f && !isMoving || -Input.GetAxisRaw("P2XboxVertical") > 0f && !isMoving)
         {
             StartCoroutine(MovePlayer(moveUpUnits));
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && !isMoving)
-        {
-            StartCoroutine(MovePlayer(moveLefttUnits));
-        }
-        if (Input.GetKey(KeyCode.DownArrow) && !isMoving)
+        if(Input.GetButton("P2MoveDown") && !isMoving || Input.GetAxisRaw("P2MoveDown") > 0f && !isMoving || Input.GetAxisRaw("P2XboxVertical") > 0f && !isMoving)
         {
             StartCoroutine(MovePlayer(moveDownUnits));
         }
-        if (Input.GetKey(KeyCode.RightArrow) && !isMoving)
+        if(Input.GetButton("P2MoveRight") && !isMoving || Input.GetAxisRaw("P2MoveRight") > 0f && !isMoving || Input.GetAxisRaw("P2XboxHorizontal") > 0f && !isMoving)
         {
             StartCoroutine(MovePlayer(moveRightUnits));
+        }
+        if(Input.GetButton("P2MoveLeft") && !isMoving || Input.GetAxisRaw("P2MoveLeft") > 0f && !isMoving || -Input.GetAxisRaw("P2XboxHorizontal") > 0f && !isMoving)
+        {
+            StartCoroutine(MovePlayer(moveLefttUnits));
         }
 
     }
@@ -204,19 +204,20 @@ public class PlayerTwo : MonoBehaviour
         Ray myRay = new Ray(transform.position, Vector3.down);
         if (Physics.Raycast(myRay, out hit))
         {
-            if(hit.collider.tag == "Buy" && Input.GetKeyDown(KeyCode.Return))
+            if(hit.collider.tag == "Buy" && Input.GetButtonDown("P2Plant"))
             {
                 BuyPlot2();
             }
-            if (hit.collider.tag == "Plant" && Input.GetKeyDown(KeyCode.Return))//If the player has enough money, they can plant a vegetable by pressing return/enter key
+            if (hit.collider.tag == "Plant" && Input.GetButtonDown("P2Plant"))//If the player has enough money, they can plant a vegetable by pressing return/enter key
             {
                 BuyVegetable2();
             }
-            else if (hit.collider.tag == "Collect" && Input.GetKeyDown(KeyCode.Return))
+            else if (hit.collider.tag == "Collect" && Input.GetButtonDown("P2Plant"))
             {
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
                 CollectVegetable2();
+                SoundManagerScript.PlaySound("footstep_grass_004");
             }
         }
     }
@@ -232,30 +233,35 @@ public class PlayerTwo : MonoBehaviour
                 mm.LoseMoney2(mm.beetCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
             if (plantAnimation.tag == "Cabbage" && mm.money2 >= mm.cabbageCost)
             {
                 mm.LoseMoney2(mm.cabbageCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
             if (plantAnimation.tag == "Carrot" && mm.money2 >= mm.carrotCost)
             {
                 mm.LoseMoney2(mm.carrotCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
             if (plantAnimation.tag == "Corn" && mm.money2 >= mm.cornCost)
             {
                 mm.LoseMoney2(mm.cornCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
             if (plantAnimation.tag == "RedPepper" && mm.money2 >= mm.redPepperCost)
             {
                 mm.LoseMoney2(mm.redPepperCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
         }
     }

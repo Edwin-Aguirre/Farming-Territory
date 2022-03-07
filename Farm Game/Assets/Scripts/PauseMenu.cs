@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,6 +13,19 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     [SerializeField]
     private GameObject controlsMenu;
+    [SerializeField]
+    private GameObject keyboardMenu;
+    [SerializeField]
+    private GameObject controllerMenu;
+
+    [SerializeField]
+    private GameObject resumeButton;
+    [SerializeField]
+    private GameObject controlsResumeButton;
+    [SerializeField]
+    private GameObject keyboardButton;
+    [SerializeField]
+    private GameObject controllerButton;
 
     public static bool isGamePaused = false;
 
@@ -32,7 +46,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetButtonDown("Pause/Back"))
         {
             if(isGamePaused)
             {
@@ -51,6 +65,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         isGamePaused = false;
         controlsMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(resumeButton);
+        EventSystem.current.firstSelectedGameObject = resumeButton;
     }
 
     void Pause()
@@ -74,5 +91,28 @@ public class PauseMenu : MonoBehaviour
     public void ControlsMenu()
     {
         controlsMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(controlsResumeButton);
+        EventSystem.current.firstSelectedGameObject = controlsResumeButton;
+        pauseMenuUI.SetActive(false);
+        keyboardButton.SetActive(true);
+        controllerButton.SetActive(true);
+        keyboardMenu.SetActive(false);
+        controllerMenu.SetActive(false);
+
+    }
+
+    public void KeyboardMenu()
+    {
+        keyboardMenu.SetActive(true);
+        keyboardButton.SetActive(false);
+        controllerButton.SetActive(false);
+    }
+
+    public void ControllerMenu()
+    {
+        controllerMenu.SetActive(true);
+        keyboardButton.SetActive(false);
+        controllerButton.SetActive(false);
     }
 }
