@@ -14,6 +14,7 @@ public class Shop2 : MonoBehaviour
 
     private Vector3 moveUpUnits = new Vector3(0,0,0.9f);
     private Vector3 moveDownUnits = new Vector3(0,0,-0.9f);
+    private Vector3 selectorPosition = new Vector3(-4.5f,0.1f,9f);
 
     [SerializeField]
     private float rayDistance;
@@ -52,7 +53,6 @@ public class Shop2 : MonoBehaviour
     {
         ShopRaycast2();
         ShopMovement();
-        WallUpRaycast();
         WallDownRaycast();
     }
 
@@ -80,32 +80,13 @@ public class Shop2 : MonoBehaviour
 
     void ShopMovement()//Move the shop selector with \ and [
     {
-        if(Input.GetKey(KeyCode.Backslash) && !isMoving)
-        {
-            StartCoroutine(MovePlayer(moveUpUnits));
-        }
-        if(Input.GetKey(KeyCode.LeftBracket) && !isMoving)
+        if(Input.GetButton("P2VShop") && !isMoving)
         {
             StartCoroutine(MovePlayer(moveDownUnits));
         }
     }
 
-    void WallUpRaycast()//For the boundary of the level. Stops the player from leaving the fence.
-    {
-        RaycastHit hit;
-        Ray myRay = new Ray(transform.position, Vector3.forward);
-        if(Physics.Raycast(myRay, out hit, rayDistance))
-        {
-            if(hit.collider.tag == "WallUp")
-            {
-                targetPos = origPos;
-                SoundManagerScript.PlaySound("bong_001");
-            }
-            
-        }
-    }
-
-    void WallDownRaycast()//For the boundary of the level. Stops the player from leaving the fence.
+     void WallDownRaycast()//For the boundary of the level. Stops the player from leaving the fence.
     {
         RaycastHit hit;
         Ray myRay = new Ray(transform.position, Vector3.back);
@@ -113,8 +94,7 @@ public class Shop2 : MonoBehaviour
         {
             if(hit.collider.tag == "WallDown")
             {
-                targetPos = origPos;
-                SoundManagerScript.PlaySound("bong_001");
+                targetPos = selectorPosition;
             }
             
         }
@@ -157,7 +137,7 @@ public class Shop2 : MonoBehaviour
         if(randomValue == 1 && Time.time > nextMove && !isMoving)
         {
             nextMove = Time.time + moveRate;
-            StartCoroutine(MovePlayer(moveUpUnits));
+            StartCoroutine(MovePlayer(moveDownUnits));
         }
         else if(randomValue == 2 && Time.time > nextMove && !isMoving)
         {
@@ -172,12 +152,12 @@ public class Shop2 : MonoBehaviour
         else if(randomValue == 4 && Time.time > nextMove && !isMoving) 
         {
             nextMove = Time.time + moveRate;
-            StartCoroutine(MovePlayer(moveUpUnits));
+            StartCoroutine(MovePlayer(moveDownUnits));
         }
         else if(randomValue == 5 && Time.time > nextMove && !isMoving) 
         {
             nextMove = Time.time + moveRate;
-            StartCoroutine(MovePlayer(moveUpUnits));
+            StartCoroutine(MovePlayer(moveDownUnits));
         }
 
     }

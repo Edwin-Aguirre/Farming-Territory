@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameLoop : MonoBehaviour
 {
@@ -11,12 +12,18 @@ public class GameLoop : MonoBehaviour
 
     [SerializeField]
     private GameObject p1WinScreen;
+    [SerializeField]
+    private GameObject p1TryAgainButton;
 
     [SerializeField]
     private GameObject p2WinScreen;
+    [SerializeField]
+    private GameObject p2TryAgainButton;
 
     [SerializeField]
     private GameObject loseScreen;
+    [SerializeField]
+    private GameObject loseTryAgainButton;
 
     [SerializeField]
     private int amountToWin;
@@ -49,12 +56,18 @@ public class GameLoop : MonoBehaviour
             p1WinScreen.SetActive(true);
             Time.timeScale = 0;
             PauseMenu.instance.pauseMenuUI.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(p1TryAgainButton);
+            EventSystem.current.firstSelectedGameObject = p1TryAgainButton;
         }
         else if(PlayerTwo.instance.plotAmount == amountToWin)
         {
             p2WinScreen.SetActive(true);
             Time.timeScale = 0;
             PauseMenu.instance.pauseMenuUI.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(p2TryAgainButton);
+            EventSystem.current.firstSelectedGameObject = p2TryAgainButton;
         }
     }
 
@@ -65,6 +78,9 @@ public class GameLoop : MonoBehaviour
             loseScreen.SetActive(true);
             Time.timeScale = 0;
             PauseMenu.instance.pauseMenuUI.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(loseTryAgainButton);
+            EventSystem.current.firstSelectedGameObject = loseTryAgainButton;
         }
     }
 

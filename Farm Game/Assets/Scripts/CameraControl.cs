@@ -56,7 +56,6 @@ public class CameraControl : MonoBehaviour
     {
         Player1Camera();
         Player2Camera();
-        MultiplayerCamera();
         AICamera();
     }
 
@@ -67,34 +66,59 @@ public class CameraControl : MonoBehaviour
         Zoom();
     }
 
-    private void Player1Camera()//Focuses the camera on player 1
+    private void MouseCursor()
     {
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
         {
+            Cursor.visible = true;
+        }
+    }
+
+    private void Player1Camera()//Focuses the camera on player 1 when the wasd keys or dpad/joystick are pressed
+    {
+        if(Input.GetButton("P1MoveUp") || Input.GetButton("P1MoveDown") || Input.GetButton("P1MoveLeft") || Input.GetButton("P1MoveRight") ||
+           Input.GetAxisRaw("P1MoveUp") > 0f || Input.GetAxisRaw("P1MoveDown") > 0f || Input.GetAxisRaw("P1MoveLeft") > 0f || Input.GetAxisRaw("P1MoveRight") > 0f ||
+           -Input.GetAxisRaw("P1XboxVertical") > 0f || Input.GetAxisRaw("P1XboxVertical") > 0f|| Input.GetAxisRaw("P1XboxHorizontal") > 0f || -Input.GetAxisRaw("P1XboxHorizontal") > 0f)
+        {
+            Cursor.visible = false;
             if(isP1NotActive)
             {
                 m_Targets.Add(player1.transform);
                 isP1NotActive = false;
                 m_ScreenEdgeBuffer = 3f;
                 m_MinSize = 4f;
-                p2Farm.SetActive(false);
+                if(isP2NotActive)
+                {
+                    
+                    p2Farm.SetActive(false);
+                }
+                MultiplayerCamera();
             }
         }
+        MouseCursor();
     }
 
-    private void Player2Camera()//Focuses the camera on player 2
+    private void Player2Camera()//Focuses the camera on player 2 when the wasd keys or dpad/joystick are pressed
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetButton("P2MoveUp") || Input.GetButton("P2MoveDown") || Input.GetButton("P2MoveLeft") || Input.GetButton("P2MoveRight") ||
+           Input.GetAxisRaw("P2MoveUp") > 0f || Input.GetAxisRaw("P2MoveDown") > 0f || Input.GetAxisRaw("P2MoveLeft") > 0f || Input.GetAxisRaw("P2MoveRight") > 0f ||
+           -Input.GetAxisRaw("P2XboxVertical") > 0f || Input.GetAxisRaw("P2XboxVertical") > 0f|| Input.GetAxisRaw("P2XboxHorizontal") > 0f || -Input.GetAxisRaw("P2XboxHorizontal") > 0f)
         {
+            Cursor.visible = false;
             if(isP2NotActive)
             {
                 m_Targets.Add(player2.transform);
                 isP2NotActive = false;
                 m_ScreenEdgeBuffer = 3f;
                 m_MinSize = 4f;
-                p1Farm.SetActive(false);
+                if(isP1NotActive)
+                {
+                    p1Farm.SetActive(false);
+                }
+                MultiplayerCamera();
             }
         }
+        MouseCursor();
     }
 
     private void AICamera()

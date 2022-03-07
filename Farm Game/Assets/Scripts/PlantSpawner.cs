@@ -82,15 +82,15 @@ public class PlantSpawner : MonoBehaviour
         Ray myRay = new Ray(transform.position, Vector3.down);
         if(Physics.Raycast(myRay, out hit))
         {
-            if(hit.collider.tag == "Buy" && Input.GetKeyDown("space"))
+            if(hit.collider.tag == "Buy" && Input.GetButtonDown("P1Plant"))
             {
                 BuyPlot();
             }
-            if(hit.collider.tag == "Plant" && Input.GetKeyDown("space"))//If the player has enough money, they can plant a vegetable by pressing space
+            if(hit.collider.tag == "Plant" && Input.GetButtonDown("P1Plant"))//If the player has enough money, they can plant a vegetable by pressing space
             {
                 BuyVegetable();
             }
-            else if(hit.collider.tag == "Collect" && Input.GetKeyDown("space"))
+            else if(hit.collider.tag == "Collect" && Input.GetButtonDown("P1Plant"))
             { 
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);

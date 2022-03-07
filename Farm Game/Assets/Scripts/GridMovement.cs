@@ -59,21 +59,21 @@ public class GridMovement : MonoBehaviour
 
     private void PlayerOneMovement()//Moving with wasd in a grid layout
     {
-        if(Input.GetKey(KeyCode.W) && !isMoving)
+        if(Input.GetButton("P1MoveUp") && !isMoving || Input.GetAxisRaw("P1MoveUp") > 0f && !isMoving || -Input.GetAxisRaw("P1XboxVertical") > 0f && !isMoving)
         {
             StartCoroutine(MovePlayer(moveUpUnits));
         }
-        if(Input.GetKey(KeyCode.A) && !isMoving)
-        {
-            StartCoroutine(MovePlayer(moveLefttUnits));
-        }
-        if(Input.GetKey(KeyCode.S) && !isMoving)
+        if(Input.GetButton("P1MoveDown") && !isMoving || Input.GetAxisRaw("P1MoveDown") > 0f && !isMoving || Input.GetAxisRaw("P1XboxVertical") > 0f && !isMoving)
         {
             StartCoroutine(MovePlayer(moveDownUnits));
         }
-        if(Input.GetKey(KeyCode.D) && !isMoving)
+        if(Input.GetButton("P1MoveRight") && !isMoving || Input.GetAxisRaw("P1MoveRight") > 0f && !isMoving || Input.GetAxisRaw("P1XboxHorizontal") > 0f && !isMoving)
         {
             StartCoroutine(MovePlayer(moveRightUnits));
+        }
+        if(Input.GetButton("P1MoveLeft") && !isMoving || Input.GetAxisRaw("P1MoveLeft") > 0f && !isMoving || -Input.GetAxisRaw("P1XboxHorizontal") > 0f && !isMoving)
+        {
+            StartCoroutine(MovePlayer(moveLefttUnits));
         }
     }
 

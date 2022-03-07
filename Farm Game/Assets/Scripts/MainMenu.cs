@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,19 +16,30 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject playMenu;
 
+    [SerializeField]
+    private GameObject mainPlayButton;
+    [SerializeField]
+    private GameObject gamemodePlayButton;
+    [SerializeField]
+    private GameObject htpButton;
+
     private void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetButtonDown("Pause/Back"))
         {
             if(htpMenu.activeInHierarchy)
             {
                 htpMenu.SetActive(false);
                 mainMenu.SetActive(true);
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(htpButton);
             }
             if(playMenu.activeInHierarchy)
             {
                 playMenu.SetActive(false);
                 mainMenu.SetActive(true);
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(mainPlayButton);
             }
         }
     }
@@ -63,6 +75,9 @@ public class MainMenu : MonoBehaviour
 
     public void PlayMenu()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(gamemodePlayButton);
+        EventSystem.current.firstSelectedGameObject = gamemodePlayButton;
         playMenu.SetActive(true);
         mainMenu.SetActive(false);
         htpMenu.SetActive(false);

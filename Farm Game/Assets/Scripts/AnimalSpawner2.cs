@@ -12,6 +12,8 @@ public class AnimalSpawner2 : MonoBehaviour
     private float timeToMove = 0.2f;
     private Vector3 moveRightUnits = new Vector3(0.9f,0,0);
     private Vector3 moveLefttUnits = new Vector3(-0.9f,0,0);
+    private Vector3 selectorPosition = new Vector3(-1.8f,0.1f,12f);
+    private Vector3 animalRotation = new Vector3(0,90f,0);
 
     [SerializeField]
     private float rayDistance;
@@ -51,7 +53,6 @@ public class AnimalSpawner2 : MonoBehaviour
         AnimalShopRaycast();
         ShopMovement();
         WallRightRaycast();
-        WallLeftRaycast();
         BuyAnimal();
         MoneyManager2.instance.multiplierText2.text = "P2 " + "x" + MoneyManager2.instance.multiplier2.ToString("0.0");
         MoneyManager2.instance.AImultiplierText.text = "AI " + "x" + MoneyManager2.instance.multiplier2.ToString("0.0");
@@ -78,15 +79,11 @@ public class AnimalSpawner2 : MonoBehaviour
         isMoving = false;
     }
 
-    void ShopMovement()//Moves the Shop selector for player 2 with / and ,
+    void ShopMovement()//Moves the Shop selector for player 1 with C and Z
     {
-        if(Input.GetKey(KeyCode.Slash) && !isMoving)
+        if(Input.GetButton("P2AShop") && !isMoving)
         {
             StartCoroutine(MovePlayer((moveRightUnits)));
-        }
-        if(Input.GetKey(KeyCode.Comma) && !isMoving)
-        {
-            StartCoroutine(MovePlayer((moveLefttUnits)));
         }
     }
 
@@ -98,23 +95,7 @@ public class AnimalSpawner2 : MonoBehaviour
         {
             if(hit.collider.tag == "WallRight")
             {
-                targetPos = origPos;
-                SoundManagerScript.PlaySound("bong_001");
-            }
-            
-        }
-    }
-
-    public void WallLeftRaycast()//For the boundary of the level. Stops the player from leaving the fence.
-    {
-        RaycastHit hit;
-        Ray myRay = new Ray(transform.position, Vector3.left);
-        if(Physics.Raycast(myRay, out hit, rayDistance))
-        {
-            if(hit.collider.tag == "WallLeft")
-            {
-                targetPos = origPos;
-                SoundManagerScript.PlaySound("bong_001");
+                targetPos = selectorPosition;
             }
             
         }
@@ -158,46 +139,46 @@ public class AnimalSpawner2 : MonoBehaviour
         placeZ = Random.Range(4.5f,9.9f);
         if(Physics.Raycast(myRay, out hit))
         {
-            if(hit.collider.tag == "BuyCow" && MoneyManager2.instance.money2 >= MoneyManager2.instance.cowCost && Input.GetKeyDown(KeyCode.Period))
+            if(hit.collider.tag == "BuyCow" && MoneyManager2.instance.money2 >= MoneyManager2.instance.cowCost && Input.GetButtonDown("P2BuyAnimal"))
             {
                 MoneyManager2.instance.LoseMoney2(MoneyManager2.instance.cowCost);
-                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), Quaternion.Euler(animalRotation));
                 MoneyManager2.instance.multiplier2 += MoneyManager2.instance.cowMultiplier;//Sets the multipler to the animal multipler and adds that by the amount of animals that were bought.
             }
         }
         if(Physics.Raycast(myRay, out hit))
         {
-            if(hit.collider.tag == "BuySheep" && MoneyManager2.instance.money2 >= MoneyManager2.instance.sheepCost && Input.GetKeyDown(KeyCode.Period))
+            if(hit.collider.tag == "BuySheep" && MoneyManager2.instance.money2 >= MoneyManager2.instance.sheepCost && Input.GetButtonDown("P2BuyAnimal"))
             {
                 MoneyManager2.instance.LoseMoney2(MoneyManager2.instance.sheepCost);
-                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), Quaternion.Euler(animalRotation));
                 MoneyManager2.instance.multiplier2 += MoneyManager2.instance.sheepMultiplier;
             }
         }
         if(Physics.Raycast(myRay, out hit))
         {
-            if(hit.collider.tag == "BuyChicken" && MoneyManager2.instance.money2 >= MoneyManager2.instance.chickenCost && Input.GetKeyDown(KeyCode.Period))
+            if(hit.collider.tag == "BuyChicken" && MoneyManager2.instance.money2 >= MoneyManager2.instance.chickenCost && Input.GetButtonDown("P2BuyAnimal"))
             {
                 MoneyManager2.instance.LoseMoney2(MoneyManager2.instance.chickenCost);
-                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), Quaternion.Euler(animalRotation));
                 MoneyManager2.instance.multiplier2 += MoneyManager2.instance.chickenMultiplier;
             }
         }
         if(Physics.Raycast(myRay, out hit))
         {
-            if(hit.collider.tag == "BuyPig" && MoneyManager2.instance.money2 >= MoneyManager2.instance.pigCost && Input.GetKeyDown(KeyCode.Period))
+            if(hit.collider.tag == "BuyPig" && MoneyManager2.instance.money2 >= MoneyManager2.instance.pigCost && Input.GetButtonDown("P2BuyAnimal"))
             {
                 MoneyManager2.instance.LoseMoney2(MoneyManager2.instance.pigCost);
-                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), Quaternion.Euler(animalRotation));
                 MoneyManager2.instance.multiplier2 += MoneyManager2.instance.pigMultiplier;
             }
         }
         if(Physics.Raycast(myRay, out hit))
         {
-            if(hit.collider.tag == "BuyHorse" && MoneyManager2.instance.money2 >= MoneyManager2.instance.horseCost && Input.GetKeyDown(KeyCode.Period))
+            if(hit.collider.tag == "BuyHorse" && MoneyManager2.instance.money2 >= MoneyManager2.instance.horseCost && Input.GetButtonDown("P2BuyAnimal"))
             {
                 MoneyManager2.instance.LoseMoney2(MoneyManager2.instance.horseCost);
-                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), transform.rotation);
+                Instantiate(animal, animalSpawner.transform.position = new Vector3(placeX, transform.position.y, placeZ), Quaternion.Euler(animalRotation));
                 MoneyManager2.instance.multiplier2 += MoneyManager2.instance.horseMultiplier;
             }
         }

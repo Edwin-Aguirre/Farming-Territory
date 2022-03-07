@@ -14,6 +14,7 @@ public class Shop : MonoBehaviour
 
     private Vector3 moveUpUnits = new Vector3(0,0,0.9f);
     private Vector3 moveDownUnits = new Vector3(0,0,-0.9f);
+    private Vector3 selectorPosition = new Vector3(-4.5f,0.1f,1.8f);
 
     [SerializeField]
     private float rayDistance;
@@ -45,7 +46,6 @@ public class Shop : MonoBehaviour
     {
         ShopMovement();
         ShopRaycast();
-        WallUpRaycast();
         WallDownRaycast();
     }
 
@@ -53,7 +53,7 @@ public class Shop : MonoBehaviour
     {
         isMoving = true;
 
-        float elapsedTime = 0;
+        float elapsedTime = 0f;
 
         origPos = transform.position;
         targetPos = origPos + direction;
@@ -73,28 +73,9 @@ public class Shop : MonoBehaviour
 
     void ShopMovement()//Move the shop selector with E and Q
     {
-        if(Input.GetKey(KeyCode.E) && !isMoving)
-        {
-            StartCoroutine(MovePlayer(moveUpUnits));
-        }
-        if(Input.GetKey(KeyCode.Q) && !isMoving)
+        if(Input.GetButton("P1VShop") && !isMoving)
         {
             StartCoroutine(MovePlayer(moveDownUnits));
-        }
-    }
-
-    void WallUpRaycast()//For the boundary of the level. Stops the player from leaving the fence.
-    {
-        RaycastHit hit;
-        Ray myRay = new Ray(transform.position, Vector3.forward);
-        if(Physics.Raycast(myRay, out hit, rayDistance))
-        {
-            if(hit.collider.tag == "WallUp")
-            {
-                targetPos = origPos;
-                SoundManagerScript.PlaySound("bong_001");
-            }
-            
         }
     }
 
@@ -106,8 +87,7 @@ public class Shop : MonoBehaviour
         {
             if(hit.collider.tag == "WallDown")
             {
-                targetPos = origPos;
-                SoundManagerScript.PlaySound("bong_001");
+                targetPos = selectorPosition;
             }
             
         }
