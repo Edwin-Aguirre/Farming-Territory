@@ -103,9 +103,9 @@ public class AIOpponent : MonoBehaviour
             {
                 distanceToClosestPlant = distanceToPlant;
                 closestPlant = currentPlant;
-                transform.position = Vector3.MoveTowards(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
             }
         }
+        transform.position = Vector3.MoveTowards(new Vector3(this.transform.position.x, 0.1f, this.transform.position.z ), closestPlant.transform.position, distanceToClosestPlant);
         Debug.DrawLine(this.transform.position, closestPlant.transform.position);
     }
 

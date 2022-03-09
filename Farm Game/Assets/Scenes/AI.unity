@@ -18431,7 +18431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0383ad70e47f8fd49a023b5b2aed9f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDistance: 0.1
+  rayDistance: 0.2
   animalSpawner: {fileID: 1763078125}
   animal: {fileID: 8257374833889565429, guid: 3712c4e3c0d4d7f4595245b4dbc1277e, type: 3}
   cow: {fileID: 8257374833889565429, guid: 3712c4e3c0d4d7f4595245b4dbc1277e, type: 3}
@@ -26145,7 +26145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d46a06319d6b44991d03a09190db51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDistance: 0.1
+  rayDistance: 0.2
   animalSpawner: {fileID: 1122011266}
   animal: {fileID: 8257374833889565429, guid: 3712c4e3c0d4d7f4595245b4dbc1277e, type: 3}
   cow: {fileID: 8257374833889565429, guid: 3712c4e3c0d4d7f4595245b4dbc1277e, type: 3}
@@ -33100,7 +33100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1101487261}
   multiplierText: {fileID: 1841371429}
-  money: 1
+  money: 200
   multiplier: 1
   beetAmount: 3
   beetCost: 1
@@ -33199,7 +33199,7 @@ MonoBehaviour:
   AIText: {fileID: 1609290402}
   multiplierText2: {fileID: 28907459}
   AImultiplierText: {fileID: 356445897}
-  money2: 1
+  money2: 200
   multiplier2: 1
   beetAmount: 3
   beetCost: 1
