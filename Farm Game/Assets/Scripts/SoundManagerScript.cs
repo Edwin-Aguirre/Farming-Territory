@@ -9,9 +9,11 @@ public class SoundManagerScript : MonoBehaviour
     private static AudioClip plantSound;
     private static AudioClip collectSound;
     private static AudioClip moveSound;
-    private static AudioClip testSound;
+    private static AudioClip buyPlotSound;
+    private static AudioClip plantAnimationEndSound;
+    private static AudioClip notEnoughMoney; 
 
-    static AudioSource audioSrc;
+    public static AudioSource audioSrc;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,9 @@ public class SoundManagerScript : MonoBehaviour
         plantSound = Resources.Load<AudioClip>("footstep_grass_002");
         collectSound = Resources.Load<AudioClip>("footstep_grass_004");
         moveSound = Resources.Load<AudioClip>("bong_001");
-        testSound = Resources.Load<AudioClip>("error_006");
+        buyPlotSound = Resources.Load<AudioClip>("footstep_grass_000");
+        plantAnimationEndSound = Resources.Load<AudioClip>("select_006");
+        notEnoughMoney = Resources.Load<AudioClip>("error_006");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -37,8 +41,14 @@ public class SoundManagerScript : MonoBehaviour
             case "bong_001":
                 audioSrc.PlayOneShot(moveSound);
                 break;
+            case "footstep_grass_000":
+                audioSrc.PlayOneShot(buyPlotSound);
+                break;
+            case "select_006":
+                audioSrc.PlayOneShot(plantAnimationEndSound);
+                break;
             case "error_006":
-                audioSrc.PlayOneShot(testSound);
+                audioSrc.PlayOneShot(notEnoughMoney);
                 break;
         }
     }

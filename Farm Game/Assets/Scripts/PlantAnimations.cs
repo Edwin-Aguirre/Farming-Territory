@@ -35,5 +35,6 @@ public class PlantAnimations : MonoBehaviour
         anim.StopPlayback();
         gameObject.tag = "Collect";
         moneyIndicator.SetActive(true);
+        SoundManagerScript.PlaySound("select_006");
     }
 }

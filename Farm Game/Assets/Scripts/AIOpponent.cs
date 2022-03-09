@@ -103,7 +103,7 @@ public class AIOpponent : MonoBehaviour
             {
                 distanceToClosestPlant = distanceToPlant;
                 closestPlant = currentPlant;
-                transform.position = Vector3.Lerp(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
+                transform.position = Vector3.MoveTowards(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
             }
         }
         Debug.DrawLine(this.transform.position, closestPlant.transform.position);
@@ -117,17 +117,102 @@ public class AIOpponent : MonoBehaviour
         {
             if(hit.collider.tag == "Buy") 
             {
-                playerTwo.BuyPlot2();
+                BuyPlot2();//Didn't use these from playerTwo because I wanted to remove the error sound. Otherwise the AI would break the sound
             }
             if (hit.collider.tag == "Plant") 
             {
-                playerTwo.BuyVegetable2();
+                BuyVegetable2();//Didn't use these from playerTwo because I wanted to remove the error sound
             }
             else if (hit.collider.tag == "Collect")
             {
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(playerTwo.emptyPlot, hit.transform.position, transform.rotation);
                 playerTwo.CollectVegetable2();
+            }
+        }
+    }
+
+    private void BuyPlot2()//Buys the plot of land
+    {
+        RaycastHit hit;
+        Ray myRay = new Ray(transform.position, Vector3.down);
+        if(Physics.Raycast(myRay, out hit))
+        {
+            if(hit.collider.transform.parent.tag == "Buy10" && mm2.money2 >= mm2.plotTenCost)
+            {
+                mm2.LoseMoney2(mm2.plotTenCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(playerTwo.emptyPlot, hit.transform.position, transform.rotation);
+                playerTwo.plotAmount++;
+                SoundManagerScript.PlaySound("footstep_grass_000");
+            }
+            if(hit.collider.transform.parent.tag == "Buy40" && mm2.money2 >= mm2.plotFortyCost)
+            {
+                mm2.LoseMoney2(mm2.plotFortyCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(playerTwo.emptyPlot, hit.transform.position, transform.rotation);
+                playerTwo.plotAmount++;
+                SoundManagerScript.PlaySound("footstep_grass_000");
+            }
+            if(hit.collider.transform.parent.tag == "Buy70" && mm2.money2 >= mm2.plotSeventyCost)
+            {
+                mm2.LoseMoney2(mm2.plotSeventyCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(playerTwo.emptyPlot, hit.transform.position, transform.rotation);
+                playerTwo.plotAmount++;
+                SoundManagerScript.PlaySound("footstep_grass_000");
+            }
+            if(hit.collider.transform.parent.tag == "Buy100" && mm2.money2 >= mm2.plotHundredCost)
+            {
+                mm2.LoseMoney2(mm2.plotHundredCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(playerTwo.emptyPlot, hit.transform.position, transform.rotation);
+                playerTwo.plotAmount++;
+                SoundManagerScript.PlaySound("footstep_grass_000");
+            }
+        }
+    }
+
+    private void BuyVegetable2()//Takes away money when each vegetable is bought by planting it
+    {
+        RaycastHit hit;
+        Ray myRay = new Ray(transform.position, Vector3.down);
+        if (Physics.Raycast(myRay, out hit))
+        {
+            if (playerTwo.plantAnimation.tag == "Beet" && mm2.money2 >= mm2.beetCost)
+            {
+                mm2.LoseMoney2(mm2.beetCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(playerTwo.plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
+            }
+            if (playerTwo.plantAnimation.tag == "Cabbage" && mm2.money2 >= mm2.cabbageCost)
+            {
+                mm2.LoseMoney2(mm2.cabbageCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(playerTwo.plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
+            }
+            if (playerTwo.plantAnimation.tag == "Carrot" && mm2.money2 >= mm2.carrotCost)
+            {
+                mm2.LoseMoney2(mm2.carrotCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(playerTwo.plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
+            }
+            if (playerTwo.plantAnimation.tag == "Corn" && mm2.money2 >= mm2.cornCost)
+            {
+                mm2.LoseMoney2(mm2.cornCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(playerTwo.plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
+            }
+            if (playerTwo.plantAnimation.tag == "RedPepper" && mm2.money2 >= mm2.redPepperCost)
+            {
+                mm2.LoseMoney2(mm2.redPepperCost);
+                Destroy(hit.transform.parent.gameObject);
+                Instantiate(playerTwo.plantAnimation, hit.transform.position, transform.rotation);
+                SoundManagerScript.PlaySound("footstep_grass_002");
             }
         }
     }

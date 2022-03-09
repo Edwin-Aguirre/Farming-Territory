@@ -17,6 +17,8 @@ public class PauseMenu : MonoBehaviour
     private GameObject keyboardMenu;
     [SerializeField]
     private GameObject controllerMenu;
+    [SerializeField]
+    private GameObject settingsMenu;
 
     [SerializeField]
     private GameObject resumeButton;
@@ -26,6 +28,9 @@ public class PauseMenu : MonoBehaviour
     private GameObject keyboardButton;
     [SerializeField]
     private GameObject controllerButton;
+    [SerializeField]
+    private GameObject musicSlider;
+
 
     public static bool isGamePaused = false;
 
@@ -65,6 +70,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         isGamePaused = false;
         controlsMenu.SetActive(false);
+        settingsMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(resumeButton);
         EventSystem.current.firstSelectedGameObject = resumeButton;
@@ -99,7 +105,7 @@ public class PauseMenu : MonoBehaviour
         controllerButton.SetActive(true);
         keyboardMenu.SetActive(false);
         controllerMenu.SetActive(false);
-
+        settingsMenu.SetActive(false);
     }
 
     public void KeyboardMenu()
@@ -114,5 +120,19 @@ public class PauseMenu : MonoBehaviour
         controllerMenu.SetActive(true);
         keyboardButton.SetActive(false);
         controllerButton.SetActive(false);
+    }
+
+    public void SettingsMenu()
+    {
+        settingsMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(musicSlider);
+        EventSystem.current.firstSelectedGameObject = musicSlider;
+        settingsMenu.SetActive(true);
+        pauseMenuUI.SetActive(false);
+        keyboardButton.SetActive(false);
+        controllerButton.SetActive(false);
+        keyboardMenu.SetActive(false);
+        controllerMenu.SetActive(false);
     }
 }

@@ -235,12 +235,20 @@ public class PlayerTwo : MonoBehaviour
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
                 SoundManagerScript.PlaySound("footstep_grass_002");
             }
+            else if(plantAnimation.tag == "Beet" && mm.money2 < mm.beetCost)
+            {
+                SoundManagerScript.PlaySound("error_006");
+            }
             if (plantAnimation.tag == "Cabbage" && mm.money2 >= mm.cabbageCost)
             {
                 mm.LoseMoney2(mm.cabbageCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
                 SoundManagerScript.PlaySound("footstep_grass_002");
+            }
+            else if(plantAnimation.tag == "Cabbage" && mm.money2 < mm.cabbageCost)
+            {
+                SoundManagerScript.PlaySound("error_006");
             }
             if (plantAnimation.tag == "Carrot" && mm.money2 >= mm.carrotCost)
             {
@@ -249,6 +257,10 @@ public class PlayerTwo : MonoBehaviour
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
                 SoundManagerScript.PlaySound("footstep_grass_002");
             }
+            else if(plantAnimation.tag == "Carrot" && mm.money2 < mm.carrotAmount)
+            {
+                SoundManagerScript.PlaySound("error_006");
+            }
             if (plantAnimation.tag == "Corn" && mm.money2 >= mm.cornCost)
             {
                 mm.LoseMoney2(mm.cornCost);
@@ -256,12 +268,20 @@ public class PlayerTwo : MonoBehaviour
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
                 SoundManagerScript.PlaySound("footstep_grass_002");
             }
+            else if(plantAnimation.tag == "Corn" && mm.money2 < mm.cornCost)
+            {
+                SoundManagerScript.PlaySound("error_006");
+            }
             if (plantAnimation.tag == "RedPepper" && mm.money2 >= mm.redPepperCost)
             {
                 mm.LoseMoney2(mm.redPepperCost);
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(plantAnimation, hit.transform.position, transform.rotation);
                 SoundManagerScript.PlaySound("footstep_grass_002");
+            }
+            else if(plantAnimation.tag == "RedPepper" && mm.money2 < mm.redPepperCost)
+            {
+                SoundManagerScript.PlaySound("error_006");
             }
         }
     }
@@ -327,6 +347,11 @@ public class PlayerTwo : MonoBehaviour
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
                 plotAmount++;
+                SoundManagerScript.PlaySound("footstep_grass_000");
+            }
+            else if(hit.collider.transform.parent.tag == "Buy10" && mm.money2 < mm.plotTenCost)
+            {
+                SoundManagerScript.PlaySound("error_006");
             }
             if(hit.collider.transform.parent.tag == "Buy40" && mm.money2 >= mm.plotFortyCost)
             {
@@ -334,6 +359,11 @@ public class PlayerTwo : MonoBehaviour
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
                 plotAmount++;
+                SoundManagerScript.PlaySound("footstep_grass_000");
+            }
+            else if(hit.collider.transform.parent.tag == "Buy40" && mm.money2 < mm.plotFortyCost)
+            {
+                SoundManagerScript.PlaySound("error_006");
             }
             if(hit.collider.transform.parent.tag == "Buy70" && mm.money2 >= mm.plotSeventyCost)
             {
@@ -341,6 +371,11 @@ public class PlayerTwo : MonoBehaviour
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
                 plotAmount++;
+                SoundManagerScript.PlaySound("footstep_grass_000");
+            }
+            else if(hit.collider.transform.parent.tag == "Buy70" && mm.money2 < mm.plotSeventyCost)
+            {
+                SoundManagerScript.PlaySound("error_006");
             }
             if(hit.collider.transform.parent.tag == "Buy100" && mm.money2 >= mm.plotHundredCost)
             {
@@ -348,6 +383,11 @@ public class PlayerTwo : MonoBehaviour
                 Destroy(hit.transform.parent.gameObject);
                 Instantiate(emptyPlot, hit.transform.position, transform.rotation);
                 plotAmount++;
+                SoundManagerScript.PlaySound("footstep_grass_000");
+            }
+            else if(hit.collider.transform.parent.tag == "Buy100" && mm.money2 < mm.plotHundredCost)
+            {
+                SoundManagerScript.PlaySound("error_006");
             }
         }
     }
