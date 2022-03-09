@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AIOpponent : MonoBehaviour
 {
-    //Written by Edwin Aguirre
+    //Written by Edwin Aguirre 
     
     private bool isMoving;
 

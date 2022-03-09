@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
+    //Written by Edwin Aguirre/Tutorial
+    
     private AudioSource audioSource;
     private GameObject[] other;
     private bool notFirst = false;

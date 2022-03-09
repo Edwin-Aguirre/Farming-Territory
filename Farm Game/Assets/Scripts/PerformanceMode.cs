@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PerformanceMode : MonoBehaviour
 {
     //Written by Edwin Aguirre
-    //Changes the game's material to an unlit shader and should give better results
+    //Changes the game's material to an unlit shader and should give better results for performance
 
     [SerializeField]
     private Material highlightMaterial;

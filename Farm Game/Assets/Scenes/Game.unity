@@ -14333,6 +14333,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 2131702145}
     m_Modifications:
+    - target: {fileID: 998659095, guid: f9aa52955d3605146bcabc6bbba06be1, type: 3}
+      propertyPath: defaultMaterialUnlit
+      value: 
+      objectReference: {fileID: 2100000, guid: a3a5e82da03ce934f8b766cd1028e45f, type: 2}
+    - target: {fileID: 998659095, guid: f9aa52955d3605146bcabc6bbba06be1, type: 3}
+      propertyPath: highlightMaterialUnlit
+      value: 
+      objectReference: {fileID: 2100000, guid: 65d61de270049484dba5b9cdb4c30175, type: 2}
     - target: {fileID: 1208911793672290079, guid: f9aa52955d3605146bcabc6bbba06be1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
