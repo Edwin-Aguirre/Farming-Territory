@@ -9,7 +9,9 @@ public class WanderAi : MonoBehaviour
     private float movespeed = 2f;
     [SerializeField]
     private float movingTimeLimit = 0f;
-    private GameObject[] crops;
+    private List<GameObject> crops = new List<GameObject>();
+    private float prevCrop;
+    private float counter;
     private Transform form;
     private Transform nearestCrop;
     private float waitTime;
@@ -25,6 +27,7 @@ public class WanderAi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        counter = 0;
         waitTime = movingTimeLimit;
         cPosition = transform.position;
         body = this.GetComponent<Rigidbody>();
@@ -39,6 +42,7 @@ public class WanderAi : MonoBehaviour
         if (FindCrops() != null)
         {
             destination = form.position;
+            form = null;
         }
         transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * movespeed);
         if(Vector3.Distance(transform.position, destination) <= 0.01f)
@@ -61,28 +65,52 @@ public class WanderAi : MonoBehaviour
 
     private Transform FindCrops()
     {
-        crops = GameObject.FindGameObjectsWithTag("Crop");
+        
         float nearestCrop = Mathf.Infinity;
         form = null;
+        
 
-        if (crops.Length >= 1)
+        if (GameObject.FindGameObjectsWithTag("Crop").Length >= 1)
         {
+
+            //Debug.Log(crops.Length);
+            foreach (GameObject crop in GameObject.FindGameObjectsWithTag("Crop"))
+            {
+                crops.Add(crop);
+            }
+
             foreach (GameObject crop in crops)
             {
                 float distance;
                 distance = Vector3.Distance(transform.position, crop.transform.position);
-                if (distance < nearestCrop)
+
+                if (distance == prevCrop)
+                {
+                    crops.Remove(crop);
+                }
+                else if (distance < nearestCrop)
                 {
                     nearestCrop = distance;
+                    prevCrop = nearestCrop;
                     form = crop.transform;
                 }
 
+                else
+                {
+                    form = null;
+                }
+
             }
+
+            crops.Clear();
+            Debug.Log(form);
+            
             return form;
         }
 
         else
         {
+            Debug.Log("null");
             return null;
         }
         
