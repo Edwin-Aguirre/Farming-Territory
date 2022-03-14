@@ -45,7 +45,7 @@ public class AIOpponent : MonoBehaviour
         AIPlanting();
         AIBoundary();
         shop2.AIShop();
-        orderFindCloest();
+        OrderFindCloest();
     }
 
     private void AIMovement()
@@ -90,7 +90,7 @@ public class AIOpponent : MonoBehaviour
         playerTwo.placeZ = Random.Range(4.5f, 9.9f);
     }
 
-    private void orderFindCloest()
+    private void OrderFindCloest()
     {
         if (MoneyManager2.instance.money2 > 100)
         {
@@ -216,7 +216,7 @@ public class AIOpponent : MonoBehaviour
                     MeshRaycastPlot2();
                     count++;
                 }
-                if (i == 4)
+                if (i == 24)
                 {
                     break;
                 }
@@ -231,7 +231,7 @@ public class AIOpponent : MonoBehaviour
                     MeshRaycastPlot2();
                     count++;
                 }
-                if (i == 4)
+                if (i == 34)
                 {
                     break;
                 }
@@ -246,7 +246,7 @@ public class AIOpponent : MonoBehaviour
                     MeshRaycastPlot2();
                     count++;
                 }
-                if (i == 4)
+                if (i == 48)
                 {
                     break;
                 }
