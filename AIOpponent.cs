@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AIOpponent : MonoBehaviour
 {
-    //Written by Edwin Aguirre
+    //Written by Edwin Aguirre and Minsung Lee
     
     private bool isMoving;
 
@@ -116,13 +116,12 @@ public class AIOpponent : MonoBehaviour
             float distanceToPlant = (currentPlant.transform.position - this.transform.position).sqrMagnitude;
             if(distanceToPlant < distanceToClosestPlant)
             {
-                if(gameObject.tag == "Buy")
+                if(closestPlant.gameObject.tag == "Buy")
                 {
-                    closestPlant = GameObject.FindWithTag("Buy").GetComponent(Collider);
+                 distanceToClosestPlant = distanceToPlant;
+                 closestPlant = currentPlant;
+                 transform.position = Vector3.Lerp(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
                 }
-                distanceToClosestPlant = distanceToPlant;
-                closestPlant = currentPlant;
-                transform.position = Vector3.Lerp(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
             }
         }
         Debug.DrawLine(this.transform.position, closestPlant.transform.position);
@@ -139,10 +138,12 @@ public class AIOpponent : MonoBehaviour
             float distanceToPlant = (currentPlant.transform.position - this.transform.position).sqrMagnitude;
             if (distanceToPlant < distanceToClosestPlant)
             {
-                closestPlant.gameObject.tag = "Plant";
+                if(closestPlant.gameObject.tag == "Plant")
+                {
                 distanceToClosestPlant = distanceToPlant;
                 closestPlant = currentPlant;
                 transform.position = Vector3.Lerp(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
+                }
             }
         }
         Debug.DrawLine(this.transform.position, closestPlant.transform.position);
@@ -158,10 +159,12 @@ public class AIOpponent : MonoBehaviour
             float distanceToPlant = (currentPlant.transform.position - this.transform.position).sqrMagnitude;
             if (distanceToPlant < distanceToClosestPlant)
             {
-                closestPlant.gameObject.tag = "Collect";
+                if(closestPlant.gameObject.tag == "Collect")
+                {
                 distanceToClosestPlant = distanceToPlant;
                 closestPlant = currentPlant;
                 transform.position = Vector3.Lerp(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
+                }
             }
         }
         Debug.DrawLine(this.transform.position, closestPlant.transform.position);
