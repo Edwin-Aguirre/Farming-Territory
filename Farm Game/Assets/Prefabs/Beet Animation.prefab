@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Beet\n\nTime: 3 sec  \nWorth: $3"
+  message: "Beet\n\nTime: 3 sec  \nWorth: $2"
 --- !u!1 &8481014958886325540
 GameObject:
   m_ObjectHideFlags: 0

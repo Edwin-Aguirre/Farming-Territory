@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Corn\n\nTime: 10 sec  \nWorth: $15"
+  message: "Corn\n\nTime: 10 sec  \nWorth: $20"
 --- !u!1 &7690192933423682641
 GameObject:
   m_ObjectHideFlags: 0

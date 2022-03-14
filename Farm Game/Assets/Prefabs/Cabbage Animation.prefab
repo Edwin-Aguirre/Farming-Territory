@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Cabbage\n\nTime: 5 sec  \nWorth: $7"
+  message: "Cabbage\n\nTime: 5 sec  \nWorth: $6"
 --- !u!1 &5870903817728219214
 GameObject:
   m_ObjectHideFlags: 0

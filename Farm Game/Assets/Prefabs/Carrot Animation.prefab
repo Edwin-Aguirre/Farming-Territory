@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Carrot\n\nTime: 4 sec  \nWorth: $5"
+  message: "Carrot\n\nTime: 4 sec  \nWorth: $10"
 --- !u!1 &8494187008489518712
 GameObject:
   m_ObjectHideFlags: 0

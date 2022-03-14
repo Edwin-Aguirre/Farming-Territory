@@ -29,9 +29,8 @@ public class AIOpponent : MonoBehaviour
     [SerializeField]
     private MoneyManager2 mm2;
 
-    private float timeToMove = 0.2f;
-    private float elapsedTime = 0;
-    
+    [SerializeField]
+    private float maxDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +46,7 @@ public class AIOpponent : MonoBehaviour
         AIBoundary();
         shop2.AIShop();
         FindClosestPlant();
+        FindClosestPlot();
     }
 
     private void AIMovement()
@@ -106,7 +106,27 @@ public class AIOpponent : MonoBehaviour
             }
         }
         transform.position = Vector3.MoveTowards(new Vector3(this.transform.position.x, 0.1f, this.transform.position.z ), closestPlant.transform.position, distanceToClosestPlant);
-        Debug.DrawLine(this.transform.position, closestPlant.transform.position);
+    }
+
+    private GameObject FindClosestPlot()
+    {
+        GameObject[] plots;
+        plots = GameObject.FindGameObjectsWithTag("Buy");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach(GameObject  plot in plots)
+        {
+            Vector3 diff = plot.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if(curDistance < distance)
+            {
+                closest = plot;
+                distance = curDistance;
+                transform.position = Vector3.MoveTowards(new Vector3(this.transform.position.x, 0.1f, this.transform.position.z ), closest.transform.position, maxDistance);
+            }
+        }
+        return closest;
     }
 
     private void MeshRaycast2()//Used to detect the squares/plots on the ground

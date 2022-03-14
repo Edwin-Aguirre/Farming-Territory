@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3935971994121358025}
   m_Layer: 0
   m_Name: Beet 3
-  m_TagString: Untagged
+  m_TagString: BuyBeet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4455380546306773107}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,9 +44,10 @@ GameObject:
   - component: {fileID: 1601164641823769307}
   - component: {fileID: 2818621023806645839}
   - component: {fileID: 7237779343775831680}
+  - component: {fileID: 159430565}
   m_Layer: 0
   m_Name: default
-  m_TagString: Buy
+  m_TagString: BuyBeet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,3 +130,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.90185547, y: 0, z: 0.90185547}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &159430565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4636872394251593898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "Beet\n\nTime: 3 sec  \nCost: $1\nWorth: $2"

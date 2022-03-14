@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8817738753633080679}
   - component: {fileID: 5439042733540766195}
   - component: {fileID: 8853684769613073576}
+  - component: {fileID: 1175486421}
   m_Layer: 0
   m_Name: default
-  m_TagString: Buy
+  m_TagString: BuyCabbage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.90185547, y: 0, z: 0.90185547}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1175486421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3188520565917024022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d25c680396264342be2fd2bf43792bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "Cabbage\n\nTime: 5 sec  \nCost: $3\nWorth: $6"
 --- !u!1 &5886817621506099151
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +122,7 @@ GameObject:
   - component: {fileID: 6555549748618714485}
   m_Layer: 0
   m_Name: Cabbage 3
-  m_TagString: Untagged
+  m_TagString: BuyCabbage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +134,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5886817621506099151}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
