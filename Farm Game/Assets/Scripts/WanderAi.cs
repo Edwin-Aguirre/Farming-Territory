@@ -56,7 +56,7 @@ public class WanderAi : MonoBehaviour
     }
 
 
-    private void moveCharacter(Vector3 direction)
+    private void moveCharacter(Vector3 direction)//Did not work as expected
     {
         //transform.LookAt(direction);
         // this.transform.parent.LookAt(direction, Vector3.up);
@@ -73,7 +73,6 @@ public class WanderAi : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Crop").Length >= 1)
         {
 
-            //Debug.Log(crops.Length);
             foreach (GameObject crop in GameObject.FindGameObjectsWithTag("Crop"))
             {
                 crops.Add(crop);
@@ -103,14 +102,12 @@ public class WanderAi : MonoBehaviour
             }
 
             crops.Clear();
-            Debug.Log(form);
             
             return form;
         }
 
         else
         {
-            Debug.Log("null");
             return null;
         }
         

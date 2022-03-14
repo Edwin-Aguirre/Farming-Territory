@@ -33017,7 +33017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1101487261}
   multiplierText: {fileID: 1841371429}
-  money: 25000
+  money: 25
   multiplier: 1
   beetAmount: 2
   beetCost: 1
@@ -33116,7 +33116,7 @@ MonoBehaviour:
   AIText: {fileID: 1609290402}
   multiplierText2: {fileID: 28907459}
   AImultiplierText: {fileID: 356445897}
-  money2: 200
+  money2: 250
   multiplier2: 2
   beetAmount: 2
   beetCost: 1
