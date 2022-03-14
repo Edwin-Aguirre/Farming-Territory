@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AIOpponent : MonoBehaviour
 {
-    //Written by Edwin Aguirre
-    
+    //Written by Edwin Aguirre and Minsung Lee
+    //this is not main script
     private bool isMoving;
 
     private Vector3 moveRightUnits = new Vector3(0.9f,0,0);
@@ -45,7 +45,7 @@ public class AIOpponent : MonoBehaviour
         AIPlanting();
         AIBoundary();
         shop2.AIShop();
-        orderFindCloest();
+        OrderFindCloest();
     }
 
     private void AIMovement()
@@ -90,7 +90,7 @@ public class AIOpponent : MonoBehaviour
         playerTwo.placeZ = Random.Range(4.5f, 9.9f);
     }
 
-    private void orderFindCloest()
+    private void OrderFindCloest()
     {
         if (MoneyManager2.instance.money2 > 100)
         {
@@ -116,13 +116,12 @@ public class AIOpponent : MonoBehaviour
             float distanceToPlant = (currentPlant.transform.position - this.transform.position).sqrMagnitude;
             if(distanceToPlant < distanceToClosestPlant)
             {
-                if(gameObject.tag == "Buy")
+                if(closestPlant.gameObject.tag == "Buy")
                 {
-                    closestPlant = GameObject.FindWithTag("Buy").GetComponent(Collider);
+                 distanceToClosestPlant = distanceToPlant;
+                 closestPlant = currentPlant;
+                 transform.position = Vector3.Lerp(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
                 }
-                distanceToClosestPlant = distanceToPlant;
-                closestPlant = currentPlant;
-                transform.position = Vector3.Lerp(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
             }
         }
         Debug.DrawLine(this.transform.position, closestPlant.transform.position);
@@ -139,10 +138,12 @@ public class AIOpponent : MonoBehaviour
             float distanceToPlant = (currentPlant.transform.position - this.transform.position).sqrMagnitude;
             if (distanceToPlant < distanceToClosestPlant)
             {
-                closestPlant.gameObject.tag = "Plant";
+                if(closestPlant.gameObject.tag == "Plant")
+                {
                 distanceToClosestPlant = distanceToPlant;
                 closestPlant = currentPlant;
                 transform.position = Vector3.Lerp(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
+                }
             }
         }
         Debug.DrawLine(this.transform.position, closestPlant.transform.position);
@@ -158,10 +159,12 @@ public class AIOpponent : MonoBehaviour
             float distanceToPlant = (currentPlant.transform.position - this.transform.position).sqrMagnitude;
             if (distanceToPlant < distanceToClosestPlant)
             {
-                closestPlant.gameObject.tag = "Collect";
+                if(closestPlant.gameObject.tag == "Collect")
+                {
                 distanceToClosestPlant = distanceToPlant;
                 closestPlant = currentPlant;
                 transform.position = Vector3.Lerp(this.transform.position, closestPlant.transform.position, (elapsedTime / timeToMove));
+                }
             }
         }
         Debug.DrawLine(this.transform.position, closestPlant.transform.position);
@@ -213,7 +216,7 @@ public class AIOpponent : MonoBehaviour
                     MeshRaycastPlot2();
                     count++;
                 }
-                if (i == 4)
+                if (i == 24)
                 {
                     break;
                 }
@@ -228,7 +231,7 @@ public class AIOpponent : MonoBehaviour
                     MeshRaycastPlot2();
                     count++;
                 }
-                if (i == 4)
+                if (i == 34)
                 {
                     break;
                 }
@@ -243,7 +246,7 @@ public class AIOpponent : MonoBehaviour
                     MeshRaycastPlot2();
                     count++;
                 }
-                if (i == 4)
+                if (i == 48)
                 {
                     break;
                 }
