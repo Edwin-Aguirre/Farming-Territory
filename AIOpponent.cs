@@ -5,7 +5,7 @@ using UnityEngine;
 public class AIOpponent : MonoBehaviour
 {
     //Written by Edwin Aguirre and Minsung Lee
-    
+    //this is not main script
     private bool isMoving;
 
     private Vector3 moveRightUnits = new Vector3(0.9f,0,0);
